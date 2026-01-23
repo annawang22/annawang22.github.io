@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
                 <a href="about.html" class="nav-item">About</a>
 
                 <div class = "dropdown">
-                    <a href="projects.html" class="nav-item dropdown-toggle" aria-haspopup="true" aria-expanded="false"> Projects </a>
+                    <a href="projects.html" class="nav-item dropdown-toggle active" aria-haspopup="true" aria-expanded="false"> Projects </a>
 
                     <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
                         <a href="projects-work.html" class="dropdown-item" role="menuitem">Work</a>
@@ -32,22 +32,27 @@
                     </div>
                 </div>
 
-                <a href="contact.html" class="nav-item active">Contact</a>
+                <a href="contact.html" class="nav-item">Contact</a>
                 
             </nav>
         </div>
     </header>
 
-    <!-- Contact -->
-    <section id="contact" class="section">
+    <section class="section">
         <div class="section-inner">
-        <h2>Contact</h2>
-        <p>Feel free to reach out — always open to opportunities and conversations.</p>
+            <h2>Research Experience</h2>
 
-        <div class="contact-links">
-            <a href="mailto:your@email.com">Email</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-        </div>
+            <div class="project-card">
+            <h3>Duke University — Research Intern</h3>
+            <p><em>Remote | July 2022 – June 2025</em></p>
+
+            <ul>
+                <li>Developed a <strong>6-layer 1D Convolutional Neural Network</strong> to classify sleep stages from EEG data, achieving <strong>~99% accuracy</strong> on the Sleep EDFX dataset.</li>
+                <li>Implemented <strong>model quantization</strong> (2-byte and 1-byte) and <strong>Quantization-Aware Training</strong>, reducing model size by ~60%.</li>
+                <li>Focused on deploying parsimonious neural networks for <strong>real-time physiological data streams</strong>.</li>
+                <li>Presented research at the <strong>Joint Statistical Meetings</strong> and the <strong>IEEE/ACM International Conference on Connected Health</strong>.</li>
+                <li>Published in <strong>IEEE</strong>: <em>A Quantized Parsimonious CNN Model for Sleep Polysomnogram Data Streams</em>.</li>
+            </ul>
+            </div>
         </div>
     </section>

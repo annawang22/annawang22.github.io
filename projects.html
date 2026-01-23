@@ -18,31 +18,49 @@
         <div class="nav-container">
             <span class="logo">Your Name</span>
             <nav class="nav-links">
+                
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="projects.html" class="nav-item active">Projects</a>
+
+                <div class = "dropdown">
+                    <a href="projects.html" class="nav-item dropdown-toggle active" aria-haspopup="true" aria-expanded="false"> Projects </a>
+
+                    <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
+                        <a href="projects-work.html" class="dropdown-item" role="menuitem">Work</a>
+                        <a href="projects-research.html" class="dropdown-item" role="menuitem">Research</a>
+                        <a href="projects-personal.html" class="dropdown-item" role="menuitem">Personal</a>
+                    </div>
+                </div>
+
                 <a href="contact.html" class="nav-item">Contact</a>
+                
             </nav>
         </div>
     </header>
 
-    <!-- Projects -->
-    <section id="projects" class="section light">
-        <h2>Projects</h2>
+<!-- Projects -->
+<section id="projects" class="section light">
+  <div class="section-inner">
+    <h2>Projects</h2>
 
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Project Title</h3>
-                <p>Short description of what you built and why it matters.</p>
-            </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Work</h3>
+        <p>Engineering internships and industry experience.</p>
+        <a class="btn btn-outline" href="projects-work.html">Explore →</a>
+      </div>
 
-            <div class="project-card">
-                <h3>Project Title</h3>
-                <p>Short description of what you built and why it matters.</p>
-            </div>
-        </div>
+      <div class="project-card">
+        <h3>Research</h3>
+        <p>Publications, conferences, and long-term research work.</p>
+        <a class="btn btn-outline" href="projects-research.html">Explore →</a>
+      </div>
 
-        <div class="section-contact">
-            <a href="#contact">Let’s work together →</a>
-        </div>
-    </section>
+      <div class="project-card">
+        <h3>Personal</h3>
+        <p>Side projects, experiments, and things I build for fun.</p>
+        <a class="btn btn-outline" href="projects-personal.html">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,18 +13,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <!-- Navigation -->
     <header class="navbar">
         <div class="nav-container">
             <span class="logo">Your Name</span>
             <nav class="nav-links">
-
-                <a href="index.html" class="nav-item active">Home</a>
+                
+                <a href="index.html" class="nav-item">Home</a>
                 <a href="about.html" class="nav-item">About</a>
 
                 <div class = "dropdown">
-                    <a href="projects.html" class="nav-item dropdown-toggle" aria-haspopup="true" aria-expanded="false"> Projects </a>
+                    <a href="projects.html" class="nav-item dropdown-toggle active" aria-haspopup="true" aria-expanded="false"> Projects </a>
 
                     <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
                         <a href="projects-work.html" class="dropdown-item" role="menuitem">Work</a>
@@ -39,38 +38,20 @@
         </div>
     </header>
 
-<section id="about" class="section home">
-  <div class="section-inner">
-    <div class="home-content">
+    <section class="section light">
+        <div class="section-inner">
+            <h2>Work Experience</h2>
 
-      <div class="home-image">
-        <img src="assets/profilepic.jpg" alt="Photo of Anna Wang">
-      </div>
+            <div class="project-card">
+                <h3>MIT Lincoln Laboratory — High School Summer Intern</h3>
+                <p><em>Lexington, MA | July 2024 – August 2024</em></p>
 
-      <div class="home-text">
-        <h1>Hi, I’m Anna.</h1>
-        <p class="subtitle">Electrical & Computer Engineering • Neural Engineering • Research</p>
-
-        <p>
-          I’m an Electrical and Computer Engineering student interested in neural engineering,
-          machine learning, and signal processing. I enjoy building systems that bridge theory
-          and real-world impact — from EEG-based neural networks to communication hardware.
-        </p>
-
-        <div class="home-actions">
-          <a class="btn" href="Anna_Wang_Resume.pdf" download>Download Resume</a>
-          <a class="btn btn-outline" href="projects.html">View Projects</a>
+                <ul>
+                    <li>Designed and implemented a <strong>700 Hz Morse code communication system</strong>, integrating hardware and signal-processing components.</li>
+                    <li>Built and analyzed analog circuits and filters using <strong>LTSpice</strong> and <strong>MATLAB</strong>, validating performance via oscilloscope and spectrum analyzer.</li>
+                    <li>Used <strong>software-defined radio (SDR)</strong> to visualize Morse code through waterfall plots.</li>
+                    <li>Selected from <strong>~250 applicants (~1% acceptance rate)</strong>.</li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-    <footer>
-        <p>© 2026 Your Name</p>
-    </footer>
-
-</body>
-</html>
+    </section>
