@@ -1,76 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna Wang | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Wang</title>
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="nav-container">
-            <span class="logo">Your Name</span>
-            <nav class="nav-links">
+  <!-- Top nav (single-page anchors) -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#about">Anna Wang</a>
 
-                <a href="index.html" class="nav-item active">Home</a>
-                <a href="about.html" class="nav-item">About</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work-experience">Work Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact Me</a>
+      </nav>
+    </div>
+  </header>
 
-                <div class = "dropdown">
-                    <a href="projects.html" class="nav-item dropdown-toggle" aria-haspopup="true" aria-expanded="false"> Projects </a>
+  <main class="wrap">
 
-                    <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
-                        <a href="projects-work.html" class="dropdown-item" role="menuitem">Work</a>
-                        <a href="projects-research.html" class="dropdown-item" role="menuitem">Research</a>
-                        <a href="projects-personal.html" class="dropdown-item" role="menuitem">Personal</a>
-                    </div>
-                </div>
-
-                <a href="contact.html" class="nav-item">Contact</a>
-                
-            </nav>
+    <!-- ABOUT / HERO -->
+    <section id="about" class="about-hero">
+      <div class="about-hero-inner">
+        <div class="about-photo-xl">
+          <img src="assets/profilepic.jpg" alt="Photo of Anna Wang" />
         </div>
-    </header>
 
-<section id="about" class="section home">
-  <div class="section-inner">
-    <div class="home-content">
+        <h1 class="about-name">Anna Wang</h1>
 
-      <div class="home-image">
-        <img src="assets/profilepic.jpg" alt="Photo of Anna Wang">
-      </div>
-
-      <div class="home-text">
-        <h1>Hi, I’m Anna.</h1>
-        <p class="subtitle">Electrical & Computer Engineering • Neural Engineering • Research</p>
-
-        <p>
-          I’m an Electrical and Computer Engineering student interested in neural engineering,
-          machine learning, and signal processing. I enjoy building systems that bridge theory
-          and real-world impact — from EEG-based neural networks to communication hardware.
+        <p class="about-desc">
+          I’m an Electrical &amp; Computer Engineering student interested in neural engineering,
+          machine learning, and signal processing. I like building systems that bridge theory
+          and real-world impact — from EEG-based models to communication hardware.
         </p>
 
-        <div class="home-actions">
-          <a class="btn" href="Anna_Wang_Resume.pdf" download>Download Resume</a>
-          <a class="btn btn-outline" href="projects.html">View Projects</a>
-        </div>
+        <a class="btn" href="annawangresume.pdf" download>Download Resume</a>
+      </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section id="work-experience" class="section">
+      <h2 class="h2">Work Experience</h2>
+
+      <div class="list">
+        <article class="item">
+          <div class="item-title">MIT Lincoln Laboratory — High School Summer Intern</div>
+          <div class="meta">Lexington, MA • Jul 2024 – Aug 2024</div>
+          <p class="desc">
+            Designed and implemented a 700 Hz Morse code communication system integrating hardware and signal processing;
+            built and analyzed analog circuits/filters in LTSpice and MATLAB; validated performance via oscilloscope and spectrum analyzer;
+            used SDR waterfall plots for visualization.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="h2">Projects</h2>
+
+      <h3 class="h3">Software</h3>
+      <div class="list">
+        <article class="item">
+          <a class="item-title" href="#" target="_blank" rel="noreferrer">Sleep Stage Classification (EEG)</a>
+          <div class="meta">Python • 1D CNN • Quantization</div>
+          <p class="desc">6-layer 1D CNN for sleep stage classification; explored quantization/QAT for deployment efficiency.</p>
+        </article>
+
+        <article class="item">
+          <a class="item-title" href="#" target="_blank" rel="noreferrer">ASL Video Translation (Capstone)</a>
+          <div class="meta">Deep Learning • Sequence Modeling</div>
+          <p class="desc">RNN-based model for translating ASL video sequences; focused on preprocessing + temporal modeling.</p>
+        </article>
       </div>
 
-    </div>
-  </div>
-</section>
+      <h3 class="h3">Hardware / Build</h3>
+      <div class="list">
+        <article class="item">
+          <a class="item-title" href="#" target="_blank" rel="noreferrer">Morse Code Communication System</a>
+          <div class="meta">Analog Circuits • SDR • MATLAB/LTSpice</div>
+          <p class="desc">Designed a 700 Hz Morse communication system with filtering + measurement validation.</p>
+        </article>
+      </div>
 
+      <h3 class="h3">Creative</h3>
+      <div class="list">
+        <article class="item">
+          <a class="item-title" href="#" target="_blank" rel="noreferrer">Game Creation</a>
+          <div class="meta">Interactive Design</div>
+          <p class="desc">Small games exploring mechanics + storytelling; used as a sandbox for rapid iteration.</p>
+        </article>
+      </div>
+    </section>
 
-    <footer>
-        <p>© 2026 Your Name</p>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="h2">Contact Me</h2>
+
+      <p class="muted">
+        If you’d like to connect, the fastest way is email. (A contact form can be added later.)
+      </p>
+
+      <div class="contact-card">
+        <div>
+          <div class="contact-title">Email</div>
+          <a class="contact-link" href="mailto:afwang@andrew.cmu.edu">afwang@andrew.cmu.edu</a>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn" href="annawangresume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
+          <a class="btn btn-ghost" href="#about">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year">2026</span> Anna Wang</span>
+      <span class="footer-credit">Built with ChatGPT (Jan 2026)</span>
     </footer>
 
+  </main>
+
+  <script>
+    // Keep copyright current
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
