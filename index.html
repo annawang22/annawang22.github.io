@@ -1,3 +1,9 @@
+<!--
+Attribution:
+This website was developed by Anna Wang. Portions of the HTML/CSS/JavaScript were generated and/or revised with assistance from ChatGPT (OpenAI, ChatGPT Pro; Jan 2026 version) based on the author’s prompts and subsequent edits.
+All final selections, modifications, and integration were performed by the author.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +14,16 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="stylesheet" href="styles.css" />
+  <script src="site.js" defer></script>
 </head>
-<body>
 
-  <!-- Top nav (single-page anchors) -->
+<body>
   <header class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="#about">Anna Wang</a>
@@ -24,15 +33,13 @@
         <a href="#work-experience">Work Experience</a>
 
         <div class="dropdown">
-            <a class="nav-item" href="#projects">Projects</a>
-
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="gamecreation.html">Game Creation</a>
-                <a class="dropdown-item" href="#TBD">TBD</a>
-                <a class="dropdown-item" href="#TBD">TBD</a>
-            </div>
+          <a class="nav-item" href="#projects" aria-haspopup="true" aria-expanded="false">Projects</a>
+          <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
+            <a class="dropdown-item" role="menuitem" href="gamecreation.html">Game Creation</a>
+            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
+            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
+          </div>
         </div>
-
 
         <a href="#contact">Contact Me</a>
       </nav>
@@ -40,7 +47,6 @@
   </header>
 
   <main class="wrap">
-
     <!-- ABOUT / HERO -->
     <section id="about" class="about-hero">
       <div class="about-hero-inner">
@@ -51,25 +57,24 @@
         <h1 class="about-name">Anna Wang</h1>
 
         <p class="about-desc">
-          I am a freshman at Carnegie Mellon University, studying Electrical & Computer Engineering. I'm fascinated by neural engineering, machine learning, and computer vision. Outside school, I enjoy playing tennis, game creation, and content creation on Youtube.
+          I am a freshman at Carnegie Mellon University, studying Electrical &amp; Computer Engineering.
+          I'm fascinated by neural engineering, machine learning, and computer vision. Outside school, I
+          enjoy playing tennis, game creation, and content creation on Youtube.
         </p>
 
-        <div class="social-icons">
-        <a href="https://www.youtube.com/@oliverfinnabe" target="_blank" aria-label="YouTube">
-            <img src="assets/youtube.svg" alt="">
-        </a>
-        <a href="https://www.linkedin.com/in/anna-wang-94969037b" target="_blank" aria-label="LinkedIn">
-            <img src="assets/linkedin.svg" alt="">
-        </a>
-        <a href="https://github.com/annawang22" target="_blank" aria-label="GitHub">
-            <img src="assets/github.svg" alt="">
-        </a>
+        <div class="social-icons" aria-label="Social links">
+          <a href="https://www.youtube.com/@oliverfinnabe" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <img src="assets/youtube.svg" alt="" />
+          </a>
+          <a href="https://www.linkedin.com/in/anna-wang-94969037b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="assets/linkedin.svg" alt="" />
+          </a>
+          <a href="https://github.com/annawang22" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="assets/github.svg" alt="" />
+          </a>
         </div>
 
-
-        <a class="btn" href="assets/AnnaWang_Resume2026.pdf" target="_blank" rel="noopener noreferrer">Resume
-        </a>
-
+        <a class="btn" href="assets/AnnaWang_Resume2026.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </div>
     </section>
 
@@ -79,19 +84,23 @@
 
       <div class="list">
         <article class="item">
-          <a class="item-title" 
-          href="https://www.ll.mit.edu/news/three-students-participate-laboratorys-annual-high-school-internship-program"
-          target = "_blank"
-          rel = "noopener noreferrer"
-          >MIT Lincoln Laboratory — High School Summer Intern</a>
+          <a
+            class="item-title"
+            href="https://www.ll.mit.edu/news/three-students-participate-laboratorys-annual-high-school-internship-program"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            MIT Lincoln Laboratory — High School Summer Intern
+          </a>
+
           <div class="meta">Lexington, MA • Jul 2024 – Aug 2024</div>
+
           <ul class="desc desc-list">
             <li>Built a 700 Hz Morse code communication system integrating hardware and signal processing</li>
             <li>Designed circuits and filters with LTSpice and MATLAB</li>
             <li>Validated performance via oscilloscope and spectrum analyzer</li>
             <li>Utilized software-defined radio waterfall plots for visualization</li>
           </ul>
-
         </article>
       </div>
     </section>
@@ -102,9 +111,8 @@
 
       <h3 class="h3">Research</h3>
       <div class="list">
-
         <article class="item">
-          <div class="item-normaltitle">Carnegie Mellon University SURA</div>
+          <div class="item-title">Carnegie Mellon University SURA</div>
           <div class="meta">Pittsburgh, PA • May 2026 – Aug 2026</div>
           <ul class="desc desc-list">
             <li>TBD!</li>
@@ -112,13 +120,24 @@
         </article>
 
         <article class="item">
-          <div class="item-normaltitle">Duke University CEI Lab - Research Intern</div>
+          <div class="item-title">Duke University CEI Lab - Research Intern</div>
           <div class="meta">Remote • Jul 2022 – Jun 2025</div>
           <ul class="desc desc-list">
-            <li>Built a 6-layer 1D convolution neural network (CNN) to classify sleep stages to detect sleep disorders achieving ~99% accuracy based on the EEG Sleep EDFX dataset</li>
-            <li>Quantized CNN to 2 bytes & 1 byte achieving ~60% and implemented Quantization-Aware Training</li>
-            <li>Presented a Paper/Podium presentation at the Joint Statistical Meetings and IEEE/ACM International Conference on Connected Health: Applications, Systems and Engineering Technologies</li>
-            <li><a class="item-bullettitle" href="https://ieeexplore.ieee.org/document/10614421?signout=success" target="_blank" rel="noopener noreferrer">Published on IEEE</a>: A. Wang, Q. Huang, Y. Chen, A Quantized Parsimonious CNN Model for Sleep Polysomnogram Data Streams</li>
+            <li>
+              Built a 6-layer 1D convolution neural network (CNN) to classify sleep stages to detect sleep
+              disorders achieving ~99% accuracy based on the EEG Sleep EDFX dataset
+            </li>
+            <li>Quantized CNN to 2 bytes &amp; 1 byte achieving ~60% and implemented Quantization-Aware Training</li>
+            <li>
+              Presented a Paper/Podium presentation at the Joint Statistical Meetings and IEEE/ACM International
+              Conference on Connected Health: Applications, Systems and Engineering Technologies
+            </li>
+            <li>
+              <a class="item-bullettitle" href="https://ieeexplore.ieee.org/document/10614421?signout=success" target="_blank" rel="noopener noreferrer">
+                Published on IEEE
+              </a>:
+              A. Wang, Q. Huang, Y. Chen, A Quantized Parsimonious CNN Model for Sleep Polysomnogram Data Streams
+            </li>
           </ul>
         </article>
       </div>
@@ -126,7 +145,7 @@
       <h3 class="h3">Software</h3>
       <div class="list">
         <article class="item">
-          <div class="item-normaltitle">Future 113 Project!</div>
+          <div class="item-title">Future 113 Project!</div>
           <div class="meta">Python • AI • Something!</div>
           <ul class="desc desc-list">
             <li>TBD!</li>
@@ -134,8 +153,8 @@
         </article>
       </div>
 
-      <h3 class="h3">Game Creation
-        <a class="h3-link" href="gamecreation.html#game-gallery">(View More)</a>
+      <h3 class="h3">
+        Game Creation <a class="h3-link" href="gamecreation.html#game-gallery">(View More)</a>
       </h3>
       <div class="list">
         <article class="item">
@@ -145,8 +164,9 @@
             <li>Attempted to recreate the classic game Subway Surfers through 3D projections</li>
           </ul>
         </article>
+
         <article class="item">
-          <a class="item-title" href="gamecreation.html#game-gallery">Game Creation Project 1</a>
+          <a class="item-title">Game Creation Project 1</a>
           <div class="meta">Unity/Unreal</div>
           <ul class="desc desc-list">
             <li>TBD!</li>
@@ -159,34 +179,22 @@
     <section id="contact" class="section">
       <h2 class="h2">Contact Me</h2>
 
-      <!-- <p class="muted">
-        If you’d like to connect, the fastest way is email. (A contact form can be added later.)
-      </p> -->
-
       <div class="contact-card">
         <div>
           <div class="contact-title">Email</div>
           <a class="contact-link" href="mailto:afwang@andrew.cmu.edu">afwang@andrew.cmu.edu</a>
         </div>
-        </div>
+      </div>
 
-        <div class="contact-backtotop">
-            <a class="btn btn-ghost" href="#about">Back to top</a>
-        </div>
-      
+      <div class="contact-backtotop">
+        <a class="btn btn-ghost" href="#about">Back to top</a>
+      </div>
     </section>
 
     <footer class="footer">
       <span>© <span id="year">2026</span> Anna Wang</span>
-      <span class="footer-credit">Built with ChatGPT (Jan 2026)</span>
+      <span class="footer-credit">Built with ChatGPT Pro (Jan 2026)</span>
     </footer>
-
   </main>
-
-  <script>
-    // Keep copyright current
-    const y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

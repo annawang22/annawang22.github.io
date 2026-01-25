@@ -1,3 +1,9 @@
+<!--
+Attribution:
+This website was developed by Anna Wang. Portions of the HTML/CSS/JavaScript were generated and/or revised with assistance from ChatGPT (OpenAI, ChatGPT Pro; Jan 2026 version) based on the author’s prompts and subsequent edits.
+All final selections, modifications, and integration were performed by the author.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,54 +14,44 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="stylesheet" href="styles.css" />
+  <script src="site.js" defer></script>
 </head>
-<body>
 
-  <!-- Top nav (single-page anchors) -->
+<body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="#about">Anna Wang</a>
+      <a class="brand" href="index.html#about">Anna Wang</a>
 
       <nav class="nav" aria-label="Primary">
         <a href="index.html#about">About</a>
         <a href="index.html#work-experience">Work Experience</a>
 
         <div class="dropdown">
-            <a class="nav-item" href="#projects">Projects</a>
-
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="gamecreation.html">Game Creation</a>
-                <a class="dropdown-item" href="#TBD">TBD</a>
-                <a class="dropdown-item" href="#TBD">TBD</a>
-            </div>
+          <a class="nav-item" href="index.html#projects" aria-haspopup="true" aria-expanded="false">Projects</a>
+          <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
+            <a class="dropdown-item" role="menuitem" href="gamecreation.html">Game Creation</a>
+            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
+            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
+          </div>
         </div>
-
 
         <a href="index.html#contact">Contact Me</a>
       </nav>
     </div>
   </header>
 
- <main>
-    <!-- HERO (full screen) -->
+  <main>
     <section class="game-hero">
       <div class="game-hero-inner">
         <h1 class="game-title">Game Creation</h1>
 
-        <p class="game-subtitle">
-          TBD blurb about game creation projects and interests.
-        </p>
-
-        <!-- <div class="game-bullets">
-          <span class="chip">Platformers</span>
-          <span class="chip">Puzzle</span>
-          <span class="chip">Interactive fiction</span>
-          <span class="chip">Prototype jams</span>
-        </div> -->
-        
+        <p class="game-subtitle">TBD blurb about game creation projects and interests.</p>
 
         <div class="game-hero-actions">
           <a class="btn" href="#game-gallery">See games</a>
@@ -64,124 +60,74 @@
       </div>
     </section>
 
-<section id="game-gallery" class="fullscreen-section">
-  <div class="wrap">
-    <h2 class="h2">Games</h2>
+    <section id="game-gallery" class="fullscreen-section">
+      <div class="wrap">
+        <h2 class="h2">Games</h2>
 
-    <div class="carousel" aria-label="Game projects carousel">
-      <button class="carousel-btn prev" type="button" aria-label="Scroll left">
-        ‹
-      </button>
+        <div class="carousel" aria-label="Game projects carousel">
+          <button class="carousel-btn prev" type="button" aria-label="Scroll left">‹</button>
 
-      <div class="carousel-track" id="gameCarousel">
-        <!-- Card 1 -->
-        <article class="project-card carousel-card">
-          <a class="project-thumb" href="https://academy.cs.cmu.edu/sharing/mistyRoseRabbit397331" target="_blank" rel="noopener noreferrer">
-            <img src="assets/15112gamepic.png" alt="15-112 game picture" />
-          </a>
-          <h3 class="project-name">15-112 Final Project: Anna Wang's Subway Surfers</h3>
-          <div class="project-meta">Python</div>
-          <p class="project-desc">Attempt to recreate the classic Subway Surfers game in Python with a twist.</p>
-        </article>
+          <div class="carousel-track" id="gameCarousel">
+            <article class="project-card carousel-card">
+              <a
+                class="project-thumb"
+                href="https://academy.cs.cmu.edu/sharing/mistyRoseRabbit397331"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="assets/15112gamepic.png" alt="Screenshot of 15-112 game project" />
+              </a>
+              <h3 class="project-name">15-112 Final Project: Anna Wang's Subway Surfers</h3>
+              <div class="project-meta">Python</div>
+              <p class="project-desc">Attempt to recreate the classic Subway Surfers game in Python with a twist.</p>
+            </article>
 
-        <!-- Card 2 -->
-        <article class="project-card carousel-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-            <img src="assets/profilepic.jpg" alt="TBD picture" />
-          </a>
-          <h3 class="project-name">TBD project name</h3>
-          <div class="project-meta">TBD what was used • TBD</div>
-          <p class="project-desc">TBD project description</p>
-        </article>
+            <article class="project-card carousel-card">
+              <a class="project-thumb" href="#" aria-disabled="true">
+                <img src="assets/profilepic.jpg" alt="TBD project image" />
+              </a>
+              <h3 class="project-name">TBD project name</h3>
+              <div class="project-meta">TBD what was used • TBD</div>
+              <p class="project-desc">TBD project description</p>
+            </article>
 
-         <!-- Card 2 -->
-        <article class="project-card carousel-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-            <img src="assets/profilepic.jpg" alt="TBD picture" />
-          </a>
-          <h3 class="project-name">TBD project name</h3>
-          <div class="project-meta">TBD what was used • TBD</div>
-          <p class="project-desc">TBD project description</p>
-        </article>
+            <article class="project-card carousel-card">
+              <a class="project-thumb" href="#" aria-disabled="true">
+                <img src="assets/profilepic.jpg" alt="TBD project image" />
+              </a>
+              <h3 class="project-name">TBD project name</h3>
+              <div class="project-meta">TBD what was used • TBD</div>
+              <p class="project-desc">TBD project description</p>
+            </article>
 
-         <!-- Card 2 -->
-        <article class="project-card carousel-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-            <img src="assets/profilepic.jpg" alt="TBD picture" />
-          </a>
-          <h3 class="project-name">TBD project name</h3>
-          <div class="project-meta">TBD what was used • TBD</div>
-          <p class="project-desc">TBD project description</p>
-        </article>
+            <article class="project-card carousel-card">
+              <a class="project-thumb" href="#" aria-disabled="true">
+                <img src="assets/profilepic.jpg" alt="TBD project image" />
+              </a>
+              <h3 class="project-name">TBD project name</h3>
+              <div class="project-meta">TBD what was used • TBD</div>
+              <p class="project-desc">TBD project description</p>
+            </article>
 
-         <!-- Card 2 -->
-        <article class="project-card carousel-card">
-          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-            <img src="assets/profilepic.jpg" alt="TBD picture" />
-          </a>
-          <h3 class="project-name">TBD project name</h3>
-          <div class="project-meta">TBD what was used • TBD</div>
-          <p class="project-desc">TBD project description</p>
-        </article>
+            <article class="project-card carousel-card">
+              <a class="project-thumb" href="#" aria-disabled="true">
+                <img src="assets/profilepic.jpg" alt="TBD project image" />
+              </a>
+              <h3 class="project-name">TBD project name</h3>
+              <div class="project-meta">TBD what was used • TBD</div>
+              <p class="project-desc">TBD project description</p>
+            </article>
+          </div>
 
+          <button class="carousel-btn next" type="button" aria-label="Scroll right">›</button>
+        </div>
       </div>
-
-      <button class="carousel-btn next" type="button" aria-label="Scroll right">
-        ›
-      </button>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <footer class="footer">
       <span>© <span id="year">2026</span> Anna Wang</span>
-      <span class="footer-credit">Built with ChatGPT (Jan 2026)</span>
+      <span class="footer-credit">Built with ChatGPT Pro (Jan 2026)</span>
     </footer>
   </main>
-
-<script>
-  const track = document.getElementById("gameCarousel");
-  const prev = document.querySelector(".carousel-btn.prev");
-  const next = document.querySelector(".carousel-btn.next");
-
-  function cardStep() {
-    const firstCard = track.querySelector(".carousel-card");
-    if (!firstCard) return 320;
-    const styles = getComputedStyle(track);
-    const gap = parseFloat(styles.columnGap || styles.gap || "0");
-    return firstCard.getBoundingClientRect().width + gap;
-  }
-
-  function updateButtons() {
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    prev.disabled = track.scrollLeft <= 2;
-    next.disabled = track.scrollLeft >= maxScroll - 2;
-  }
-
-  function clickZoom(btn) {
-    btn.animate(
-      [{ transform: "translateY(-50%) scale(1)" }, { transform: "translateY(-50%) scale(1.14)" }, { transform: "translateY(-50%) scale(1)" }],
-      { duration: 180, easing: "ease-out" }
-    );
-  }
-
-  prev.addEventListener("click", () => {
-    clickZoom(prev);
-    track.scrollBy({ left: -cardStep(), behavior: "smooth" });
-  });
-
-  next.addEventListener("click", () => {
-    clickZoom(next);
-    track.scrollBy({ left: cardStep(), behavior: "smooth" });
-  });
-
-  track.addEventListener("scroll", updateButtons);
-  window.addEventListener("resize", updateButtons);
-
-  // init
-  updateButtons();
-</script>
-
 </body>
 </html>
