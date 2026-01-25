@@ -619,6 +619,11 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   box-shadow: none;
 }
 
+.carousel-track{
+  -webkit-overflow-scrolling: touch;
+}
+
+
 /* Responsive to tech changes*/
 @media (max-width: 640px){
   .nav{ gap: 12px; }
