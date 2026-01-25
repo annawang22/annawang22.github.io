@@ -117,6 +117,56 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
 }
 
+.dropdown{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* submenu container */
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 6px;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu{
+  display: block;
+}
+
+/* IMPORTANT: override your .nav a styles inside dropdown */
+.dropdown-menu .dropdown-item{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* this is what makes the highlight cover the whole row */
+  padding: 10px 12px;
+
+  border-radius: 8px;
+  border-bottom: 0 !important;     /* kills the nav underline/border */
+  text-decoration: none !important;
+
+  color: #1f2933;
+}
+
+/* full-width hover */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus-visible{
+  background-color: #f3f4f6;
+}
+
+
+
 /* Section spacing */
 .section{
   padding: 56px 0;
@@ -195,10 +245,26 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
 .item-title{
   font-weight: 700;
   color: var(--text);
-  text-decoration: none;
+  font-size: 18px;
+}
+
+.item-normaltitle{
+  font-weight: 700;
+  color: var(--text);
+  font-size: 18px;
 }
 
 .item-title:hover{
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.item-bullettitle{
+  font-weight: 0;
+  color: var(--text);
+}
+
+.item-bullettitle:hover{
   text-decoration: underline;
   text-decoration-color: var(--accent);
 }
@@ -213,6 +279,22 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   margin: 10px 0 0;
   color: color-mix(in oklab, var(--text) 86%, var(--muted));
 }
+
+/* Work experience bullets */
+.desc-list{
+  margin: 10px 0 0;          /* keep similar spacing as your .desc */
+  padding-left: 1.2rem;      /* indentation */
+}
+
+.desc-list li{
+  margin: 6px 0;             /* vertical spacing between bullets */
+  line-height: 1.55;
+}
+
+.desc-list li::marker{
+  color: var(--muted);       /* subtle bullet color */
+}
+
 
 /* Chips */
 .chips{ display: flex; flex-wrap: wrap; gap: 10px; }
@@ -257,6 +339,14 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
 .contact-link:hover{ text-decoration: underline; }
 
 .contact-actions{ display: flex; gap: 10px; flex-wrap: wrap; }
+
+.contact-backtotop{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: -25px;
+}
+
 
 /* Buttons */
 .btn{
@@ -337,7 +427,7 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .about-photo-xl img{
@@ -348,6 +438,7 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   border: 1px solid var(--border);
   box-shadow: 0 18px 54px rgba(15,23,42,.16);
 }
+
 
 .about-name{
   font-family: "DM Serif Display", Georgia, serif;
@@ -367,4 +458,177 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   .about-grid{ grid-template-columns: 1fr; }
   .about-photo img{ width: 110px; height: 110px; }
   .nav{ gap: 12px; }
+}
+
+.social-icons{
+  display: flex;
+  gap: 35px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.social-icons a{
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.social-icons img{
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+}
+
+.social-icons a:hover{
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  transform: translateY(-2px);
+}
+
+.social-icons a:hover img{
+  opacity: 1;
+}
+
+.social-icons img{
+  filter: brightness(0) saturate(100%);
+}
+
+
+/* game creation set up */
+/* ===== Game Creation page ===== */
+.game-hero{
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  padding: 56px 0;
+
+  --section-bg:
+    radial-gradient(900px 520px at 20% 10%,
+      color-mix(in oklab, var(--accent) 10%, white) 0%,
+      transparent 60%),
+    radial-gradient(820px 520px at 85% 30%,
+      color-mix(in oklab, var(--accent-2) 10%, white) 0%,
+      transparent 60%),
+    linear-gradient(180deg, #ffffff, var(--bg1));
+}
+
+.game-hero-inner{
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.game-title{
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(46px, 6vw, 78px);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.game-subtitle{
+  margin: 0;
+  max-width: 70ch;
+  font-size: 18px;
+  color: color-mix(in oklab, var(--text) 90%, var(--muted));
+}
+
+.game-bullets{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.game-hero-actions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fullscreen-section{
+  min-height: calc(100vh - 64px); /* navbar height */
+  display: flex;
+  align-items: center;
+}
+
+#game-gallery{
+  align-items: flex-start;
+  padding-top: 56px;
+}
+
+
+
+/* .game-section{
+  min-height: calc(100vh - 64px); 
+  display: flex;
+  align-items: center;
+} */
+
+
+/* Steph-style card grid */
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.project-card{
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 10px 32px rgba(15,23,42,.06);
+  padding: 14px;
+  text-align: center;
+}
+
+.project-thumb{
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.project-thumb img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-name{
+  margin: 12px 0 4px;
+  font-size: 18px;
+}
+
+.project-meta{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.project-desc{
+  margin: 0;
+  color: color-mix(in oklab, var(--text) 86%, var(--muted));
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .project-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-thumb img{ height: 200px; }
+}
+
+@media (max-width: 640px){
+  .project-grid{ grid-template-columns: 1fr; }
+  .project-thumb img{ height: 220px; }
 }

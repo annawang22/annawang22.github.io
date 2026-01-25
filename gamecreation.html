@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Wang</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top nav (single-page anchors) -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#about">Anna Wang</a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#about">About</a>
+        <a href="index.html#work-experience">Work Experience</a>
+
+        <div class="dropdown">
+            <a class="nav-item" href="#projects">Projects</a>
+
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="gamecreation.html">Game Creation</a>
+                <a class="dropdown-item" href="#TBD">TBD</a>
+                <a class="dropdown-item" href="#TBD">TBD</a>
+            </div>
+        </div>
+
+
+        <a href="index.html#contact">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+ <main>
+    <!-- HERO (full screen) -->
+    <section class="game-hero">
+      <div class="game-hero-inner">
+        <h1 class="game-title">Game Creation</h1>
+
+        <p class="game-subtitle">
+          I make small games that explore mechanics, storytelling, and rapid iteration.
+          I like playful prototypes, tight controls, and “one cool idea” experiences.
+        </p>
+
+        <!-- <div class="game-bullets">
+          <span class="chip">Platformers</span>
+          <span class="chip">Puzzle</span>
+          <span class="chip">Interactive fiction</span>
+          <span class="chip">Prototype jams</span>
+        </div> -->
+        
+
+        <div class="game-hero-actions">
+          <a class="btn" href="#game-gallery">See games</a>
+          <a class="btn" href="index.html#projects">Back to projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (Steph-style cards) -->
+    <section id="game-gallery" class="fullscreen-section">
+      <div class="wrap">
+        <h2 class="h2">Games</h2>
+
+        <div class="project-grid">
+          <!-- Card 1 -->
+          <article class="project-card">
+            <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/games/floppyfish.png" alt="Floppy Fish screenshot" />
+            </a>
+
+            <h3 class="project-name">Floppy Fish</h3>
+            <div class="project-meta">Java</div>
+            <p class="project-desc">
+              A fun riff on Flappy Bird—built in Java with buoyancy-style movement and underwater vibes.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="project-card">
+            <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+              <img src="assets/games/circles.png" alt="Circles app screenshot" />
+            </a>
+
+            <h3 class="project-name">Circles</h3>
+            <div class="project-meta">Swift • Firebase</div>
+            <p class="project-desc">
+              A photo-sharing app with prompts to encourage small groups of friends to stay in touch.
+            </p>
+          </article>
+
+          <!-- Duplicate more cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year">2026</span> Anna Wang</span>
+      <span class="footer-credit">Built with ChatGPT (Jan 2026)</span>
+    </footer>
+  </main>
+
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
