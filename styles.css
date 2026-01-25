@@ -195,6 +195,19 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   margin: 28px 0 12px;
 }
 
+.h3 .h3-link{
+  margin-left: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+.h3 .h3-link:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+
 /* About (legacy grid, if present anywhere) */
 .about-grid{
   display: grid;
@@ -559,11 +572,100 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   align-items: center;
 }
 
-#game-gallery{
-  align-items: flex-start;
-  padding-top: 56px;
+#game-gallery .h2{
+  text-align: center;
 }
 
+
+#game-gallery{
+  align-items: stretch;          /* lets inner content use full width */
+  padding: 56px 0;               /* symmetric top/bottom padding */
+}
+
+#game-gallery .wrap{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+
+/* Push the carousel to use the remaining space nicely */
+#game-gallery .carousel{
+  margin-top: 14px;
+  flex: 1;                       /* take remaining vertical space */
+  display: flex;
+  align-items: center;           /* vertically center the track area */
+}
+
+
+/* ===== Carousel for Game Creation ===== */
+.carousel{
+  position: relative;
+  margin-top: 12px;
+}
+
+.carousel-track{
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 18px 2px 26px;
+  scrollbar-width: none;       /* Firefox */
+}
+.carousel-track::-webkit-scrollbar{ display: none; }  /* Chrome/Safari */
+
+.carousel-card{
+  flex: 0 0 auto;
+  width: min(620px, 86vw);     /* BIG cards */
+  text-align: left;            /* feels more “project-y” */
+}
+
+/* make the image taller for bigger cards */
+.carousel-card .project-thumb img{
+  height: 260px;
+}
+
+.carousel-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 10px 26px rgba(15,23,42,.10);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.carousel-btn.prev{ left: -18px; }
+.carousel-btn.next{ right: -18px; }
+
+.carousel-btn:hover{
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* disabled = light gray + not clickable */
+.carousel-btn:disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* optional: give the track some side padding so cards don't hide under arrows */
+@media (max-width: 640px){
+  .carousel-btn.prev{ left: -8px; }
+  .carousel-btn.next{ right: -8px; }
+  .carousel-card{ width: 86vw; }
+  .carousel-card .project-thumb img{ height: 240px; }
+}
 
 
 /* .game-section{
@@ -585,7 +687,9 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   border-radius: var(--radius);
   background: var(--panel);
   box-shadow: 0 10px 32px rgba(15,23,42,.06);
-  padding: 14px;
+
+  padding: 20px;
+  min-height: 520px;
   text-align: center;
 }
 
@@ -599,7 +703,7 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
 
 .project-thumb img{
   width: 100%;
-  height: 180px;
+  height: 300px;
   object-fit: cover;
   display: block;
 }
@@ -632,3 +736,44 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   .project-grid{ grid-template-columns: 1fr; }
   .project-thumb img{ height: 220px; }
 }
+
+#game-gallery .wrap{
+  width: min(1400px, calc(100% - 48px)); /* increase from --max (980px) */
+  margin: 0 auto;
+}
+
+/* Ensure the carousel itself stretches full width of that wider wrap */
+#game-gallery .carousel,
+#game-gallery .carousel-track{
+  width: 100%;
+}
+
+/* Game gallery: snap to one centered card at a time */
+#game-gallery{
+  --carousel-card-w: min(760px, 78vw);
+}
+
+#game-gallery .carousel-track{
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: calc((100% - var(--carousel-card-w)) / 2);
+
+  /* centers the first/last card nicely when snapped */
+  padding-inline: calc((100% - var(--carousel-card-w)) / 2);
+}
+
+#game-gallery .carousel-card{
+  width: var(--carousel-card-w);
+  scroll-snap-align: center;
+  scroll-snap-stop: always; /* makes snapping feel more “one-at-a-time” */
+}
+
+#game-gallery .carousel-track{
+  padding-bottom: 10px; /* reduce until it feels right */
+}
+
+#game-gallery.fullscreen-section{
+  min-height: auto;        /* stop forcing near-100vh */
+  align-items: flex-start; /* no vertical centering */
+  padding: 48px 0 80px;    /* control top/bottom spacing explicitly */
+}
+

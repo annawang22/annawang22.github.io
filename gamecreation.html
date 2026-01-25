@@ -46,8 +46,7 @@
         <h1 class="game-title">Game Creation</h1>
 
         <p class="game-subtitle">
-          I make small games that explore mechanics, storytelling, and rapid iteration.
-          I like playful prototypes, tight controls, and “one cool idea” experiences.
+          TBD blurb about game creation projects and interests.
         </p>
 
         <!-- <div class="game-bullets">
@@ -65,42 +64,75 @@
       </div>
     </section>
 
-    <!-- GALLERY (Steph-style cards) -->
-    <section id="game-gallery" class="fullscreen-section">
-      <div class="wrap">
-        <h2 class="h2">Games</h2>
+<section id="game-gallery" class="fullscreen-section">
+  <div class="wrap">
+    <h2 class="h2">Games</h2>
 
-        <div class="project-grid">
-          <!-- Card 1 -->
-          <article class="project-card">
-            <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-              <img src="assets/games/floppyfish.png" alt="Floppy Fish screenshot" />
-            </a>
+    <div class="carousel" aria-label="Game projects carousel">
+      <button class="carousel-btn prev" type="button" aria-label="Scroll left">
+        ‹
+      </button>
 
-            <h3 class="project-name">Floppy Fish</h3>
-            <div class="project-meta">Java</div>
-            <p class="project-desc">
-              A fun riff on Flappy Bird—built in Java with buoyancy-style movement and underwater vibes.
-            </p>
-          </article>
+      <div class="carousel-track" id="gameCarousel">
+        <!-- Card 1 -->
+        <article class="project-card carousel-card">
+          <a class="project-thumb" href="https://academy.cs.cmu.edu/sharing/mistyRoseRabbit397331" target="_blank" rel="noopener noreferrer">
+            <img src="assets/15112gamepic.png" alt="15-112 game picture" />
+          </a>
+          <h3 class="project-name">15-112 Final Project: Anna Wang's Subway Surfers</h3>
+          <div class="project-meta">Python</div>
+          <p class="project-desc">Attempt to recreate the classic Subway Surfers game in Python with a twist.</p>
+        </article>
 
-          <!-- Card 2 -->
-          <article class="project-card">
-            <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
-              <img src="assets/games/circles.png" alt="Circles app screenshot" />
-            </a>
+        <!-- Card 2 -->
+        <article class="project-card carousel-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+            <img src="assets/profilepic.jpg" alt="TBD picture" />
+          </a>
+          <h3 class="project-name">TBD project name</h3>
+          <div class="project-meta">TBD what was used • TBD</div>
+          <p class="project-desc">TBD project description</p>
+        </article>
 
-            <h3 class="project-name">Circles</h3>
-            <div class="project-meta">Swift • Firebase</div>
-            <p class="project-desc">
-              A photo-sharing app with prompts to encourage small groups of friends to stay in touch.
-            </p>
-          </article>
+         <!-- Card 2 -->
+        <article class="project-card carousel-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+            <img src="assets/profilepic.jpg" alt="TBD picture" />
+          </a>
+          <h3 class="project-name">TBD project name</h3>
+          <div class="project-meta">TBD what was used • TBD</div>
+          <p class="project-desc">TBD project description</p>
+        </article>
 
-          <!-- Duplicate more cards as needed -->
-        </div>
+         <!-- Card 2 -->
+        <article class="project-card carousel-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+            <img src="assets/profilepic.jpg" alt="TBD picture" />
+          </a>
+          <h3 class="project-name">TBD project name</h3>
+          <div class="project-meta">TBD what was used • TBD</div>
+          <p class="project-desc">TBD project description</p>
+        </article>
+
+         <!-- Card 2 -->
+        <article class="project-card carousel-card">
+          <a class="project-thumb" href="#" target="_blank" rel="noopener noreferrer">
+            <img src="assets/profilepic.jpg" alt="TBD picture" />
+          </a>
+          <h3 class="project-name">TBD project name</h3>
+          <div class="project-meta">TBD what was used • TBD</div>
+          <p class="project-desc">TBD project description</p>
+        </article>
+
       </div>
-    </section>
+
+      <button class="carousel-btn next" type="button" aria-label="Scroll right">
+        ›
+      </button>
+    </div>
+  </div>
+</section>
+
 
     <footer class="footer">
       <span>© <span id="year">2026</span> Anna Wang</span>
@@ -108,9 +140,48 @@
     </footer>
   </main>
 
-  <script>
-    const y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-  </script>
+<script>
+  const track = document.getElementById("gameCarousel");
+  const prev = document.querySelector(".carousel-btn.prev");
+  const next = document.querySelector(".carousel-btn.next");
+
+  function cardStep() {
+    const firstCard = track.querySelector(".carousel-card");
+    if (!firstCard) return 320;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0");
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function updateButtons() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= maxScroll - 2;
+  }
+
+  function clickZoom(btn) {
+    btn.animate(
+      [{ transform: "translateY(-50%) scale(1)" }, { transform: "translateY(-50%) scale(1.14)" }, { transform: "translateY(-50%) scale(1)" }],
+      { duration: 180, easing: "ease-out" }
+    );
+  }
+
+  prev.addEventListener("click", () => {
+    clickZoom(prev);
+    track.scrollBy({ left: -cardStep(), behavior: "smooth" });
+  });
+
+  next.addEventListener("click", () => {
+    clickZoom(next);
+    track.scrollBy({ left: cardStep(), behavior: "smooth" });
+  });
+
+  track.addEventListener("scroll", updateButtons);
+  window.addEventListener("resize", updateButtons);
+
+  // init
+  updateButtons();
+</script>
+
 </body>
 </html>
