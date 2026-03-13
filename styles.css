@@ -221,14 +221,13 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   box-shadow: 0 10px 32px rgba(15,23,42,.06);
 }
 
-.item-title{
+.item-title{ 
   font-weight: 700;
   color: var(--text);
   font-size: 18px;
 }
 
 .item-bullettitle{
-  font-weight: 700;
   color: var(--text);
   text-decoration: none;
 }
