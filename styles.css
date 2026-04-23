@@ -858,13 +858,39 @@ article.project-archive-card:hover{
 
 a.project-archive-card:focus-visible{ outline: none; }
 
+/* Archive card media: no project images yet — one shared “no image” look everywhere. */
 .project-archive-card__thumb{
   display: block;
+  position: relative;
   height: 9.5rem;
   min-height: 8rem;
   width: 100%;
-  background: linear-gradient(135deg, var(--g1, var(--sage-mid)), var(--g2, var(--sage-light)));
   flex-shrink: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--sage-mid) 24%, var(--bg0)),
+    color-mix(in oklab, var(--sage-light) 30%, var(--bg1))
+  );
+}
+
+.project-archive-card__thumb::after{
+  content: "Image coming soon";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  font-family: var(--font-typewriter);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--muted) 75%, var(--text));
+  line-height: 1.35;
+  pointer-events: none;
 }
 
 .project-archive-card__content{
@@ -922,6 +948,230 @@ h3.project-archive-card__title,
 
 .project-archive-card__links a:hover{ color: var(--forest); text-decoration: underline; }
 
+/* —— Project card modal (course pages; one instance, injected by project-modal.js) */
+.project-modal[hidden]{
+  display: none !important;
+}
+
+body.project-modal--open{
+  overflow: hidden;
+}
+
+.project-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.22s var(--ease-soft),
+    visibility 0.22s var(--ease-soft);
+}
+
+.project-modal.project-modal--open{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.project-modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 28, 24, 0.5);
+  z-index: 0;
+}
+
+.project-modal__panel{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(56rem, 100vw - 2 * var(--gutter-x));
+  max-height: min(90vh, 52rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+  background: var(--panel-strong);
+  background-image: var(--grain);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  transform: scale(0.98) translateY(0.4rem);
+  opacity: 0;
+  transition:
+    transform 0.22s var(--ease-soft),
+    opacity 0.22s var(--ease-soft);
+}
+
+.project-modal.project-modal--open .project-modal__panel{
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.project-modal__close{
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--parchment) 50%, #fff 50%);
+  color: var(--forest);
+  font-size: 1.35rem;
+  line-height: 1;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease-soft), border-color var(--t-fast) var(--ease-soft);
+}
+
+.project-modal__close:hover{
+  background: var(--panel);
+  border-color: color-mix(in oklab, var(--forest) 25%, var(--border));
+}
+
+.project-modal__grid{
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  padding-top: var(--space-8);
+}
+
+.project-modal__media{
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--parchment);
+  border: 1px solid var(--border-subtle);
+  aspect-ratio: 16 / 9;
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-modal__placeholder{
+  position: absolute;
+  margin: 0;
+  padding: var(--space-4);
+  text-align: center;
+  font-size: 0.875rem;
+  font-family: var(--font-typewriter);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.project-modal__body{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+  padding-top: var(--space-1);
+}
+
+.project-modal__title{
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--forest);
+  font-family: var(--font-serif-display);
+  letter-spacing: 0.01em;
+  padding-right: 2.75rem;
+}
+
+.project-modal__label{
+  margin: 0 0 var(--space-2);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage);
+  font-family: var(--font-typewriter);
+}
+
+.project-modal__text{
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: color-mix(in oklab, var(--text) 92%, var(--muted) 8%);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.project-modal__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.project-modal__actions .btn[hidden],
+.project-modal__actions .project-modal__btn[hidden]{
+  display: none !important;
+}
+
+.project-modal__actions .btn{
+  min-height: 2.75rem;
+  flex: 1 1 auto;
+  min-width: 7.5rem;
+  justify-content: center;
+  transition: transform 0.18s var(--ease-soft), background var(--t-med) var(--ease-soft), box-shadow var(--t-med) var(--ease-soft);
+}
+
+.project-modal__actions .btn:hover{
+  transform: translateY(-1px);
+}
+
+/* Article cards: whole surface invites modal; inner links stay links */
+article.project-archive-card[data-project-modal]{
+  cursor: pointer;
+}
+article.project-archive-card[data-project-modal] a{
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 800px){
+  .project-modal__grid{
+    grid-template-columns: 1fr;
+    padding: var(--space-5);
+    padding-top: var(--space-7);
+    gap: var(--space-5);
+  }
+
+  .project-modal__media{
+    max-height: 40vh;
+  }
+
+  .project-modal__title{
+    font-size: 1.3rem;
+    padding-right: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
   *{
@@ -931,6 +1181,9 @@ h3.project-archive-card__title,
   .course-gateway-card:hover,
   a.project-archive-card:hover,
   article.project-archive-card:hover{
+    transform: none;
+  }
+  .project-modal.project-modal--open .project-modal__panel{
     transform: none;
   }
 }
