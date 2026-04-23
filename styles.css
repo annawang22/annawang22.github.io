@@ -3,25 +3,55 @@ This website was developed by Anna Wang. Portions of the HTML/CSS/JavaScript wer
 All final selections, modifications, and integration were performed by the author. */
 
 /* =========================
-   Global tokens & reset
+   Global tokens & reset (Phase 8 — forest, sage, warm cream)
    ========================= */
 :root{
-  /* Color palette */
-  --bg0: #ffffff;         /* base */
-  --bg1: #f5f7fb;         /* panels / soft fills */
-  --section-alt: #e4ecfa; /* alternating section band (light blue) */
-  --panel: rgba(255,255,255,.92);
-  --panel-strong: rgba(255,255,255,.98);
+  /* Primary */
+  --bg0: #f0ebe1;                 /* warm cream (main) */
+  --bg1: #e4dfcf;                 /* paper / deep cream */
+  --section-alt: #d4e0d0;         /* misty sage — alternating bands */
+  --parchment: #ebe4d4;
 
-  --text: #0f172a;        /* slate-900 */
-  --muted: #475569;       /* slate-600 */
-  --border: rgba(15,23,42,.10);
+  /* Supporting */
+  --moss: #3a4a35;
+  --sage: #5f6f5c;
+  --sage-mid: #7d8f7a;
+  --sage-light: #a8b5a0;
+  --olive: #5e5746;
+  --forest: #2a3f32;
+  --forest-mid: #3d5c47;
+  --mist: #c2d0bf;
 
-  --accent: #0f172a;      /* just --text */
-  --accent-2: #0f172a;    /* just --text */
-  --shadow: 0 14px 44px rgba(15,23,42,.10);
+  --text: #1a211c;
+  --muted: #575a54;
 
-  --radius: 16px;
+  --panel: color-mix(in oklab, #fffcf3 50%, var(--parchment) 50%);
+  --panel-strong: color-mix(in oklab, #fffef7 60%, var(--section-alt) 40%);
+
+  --border: color-mix(in oklab, var(--forest) 16%, var(--parchment) 84%);
+  --border-subtle: color-mix(in oklab, var(--forest) 9%, transparent);
+
+  --accent: var(--forest);
+  --accent-2: var(--forest-mid);
+  --accent-sage: var(--sage-mid);
+
+  --shadow: 0 20px 48px color-mix(in oklab, var(--forest) 10%, transparent);
+  --shadow-card: 0 12px 32px color-mix(in oklab, var(--forest) 6%, transparent);
+  --shadow-hover: 0 20px 44px color-mix(in oklab, var(--forest) 11%, transparent);
+
+  /* subtle paper / atmosphere */
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+
+  --font-serif-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body: "Lora", Georgia, "Times New Roman", serif;
+  --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --font-typewriter: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+
+  --ease-soft: cubic-bezier(0.33, 0.7, 0.35, 1);
+  --t-fast: 0.22s;
+  --t-med: 0.38s;
+
+  --radius: 18px;
   --max: 980px;
 }
 
@@ -30,15 +60,51 @@ html{ scroll-behavior: smooth; }
 
 body{
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-body);
+  font-size: 17px;
   color: var(--text);
-  background: var(--bg0);
-  line-height: 1.55;
+  background-color: var(--bg0);
+  background-image: var(--grain);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Typewriter / label text — nav, metadata, small caps */
+.nav a,
+.meta,
+.h3,
+.h3 .h3-link,
+.contact-title,
+.project-archive-card__meta,
+.course-archive-crumb,
+.footer,
+.footer-credit{
+  font-family: var(--font-typewriter);
+  letter-spacing: 0.03em;
+}
+
+.h3{ letter-spacing: 0.1em; }
+
+/* Major headings: elegant serif */
+.h2,
+.brand,
+.about-name,
+.course-archive-title,
+.course-gateway-card h3,
+.course-gateway-card__title,
+.course-gateway-card__code{
+  font-family: var(--font-serif-display);
+}
+
+.h2, .about-name, .course-archive-title{ letter-spacing: 0.01em; }
+
+.nav a{ font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.meta{ font-size: 12.5px; }
+.course-archive-crumb, .course-archive-crumb a{ font-size: 12px; }
 
 /* Shows highlight of what's tabbing */
 :focus-visible{
-  outline: 3px solid color-mix(in oklab, var(--accent) 60%, white);
+  outline: 3px solid color-mix(in oklab, var(--forest) 50%, #fff);
   outline-offset: 3px;
   border-radius: 10px;
 }
@@ -70,16 +136,17 @@ main > section::before{
 main > section:nth-of-type(odd){ --section-bg: var(--bg0); }
 main > section:nth-of-type(even){ --section-bg: var(--section-alt); }
 
-/* Hero sets its own full-bleed background (wins over nth-of-type for --section-bg) */
+/* Hero — soft mist + warm cream (wins over nth-of-type) */
 main > section.about-hero{
   --section-bg:
-    radial-gradient(900px 520px at 20% 10%,
-      color-mix(in oklab, var(--accent) 10%, white) 0%,
-      transparent 60%),
-    radial-gradient(820px 520px at 85% 30%,
-      color-mix(in oklab, var(--accent-2) 10%, white) 0%,
-      transparent 60%),
-    linear-gradient(180deg, #ffffff, var(--bg1));
+    radial-gradient(900px 520px at 18% 8%,
+      color-mix(in oklab, var(--sage-mid) 22%, var(--bg0) 78%) 0%,
+      transparent 58%),
+    radial-gradient(720px 480px at 86% 24%,
+      color-mix(in oklab, var(--sage-light) 16%, var(--parchment) 84%) 0%,
+      transparent 55%),
+    linear-gradient(180deg, var(--parchment) 0%, var(--bg0) 55%, var(--bg1) 100%),
+    var(--grain);
 }
 
 /* =========================
@@ -89,9 +156,11 @@ main > section.about-hero{
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(10px);
-  background: color-mix(in oklab, var(--bg0) 86%, transparent);
-  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px) saturate(1.05);
+  background: color-mix(in oklab, var(--bg0) 78%, transparent);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--sage) 6%, transparent);
+  transition: background var(--t-med) var(--ease-soft), box-shadow var(--t-med) var(--ease-soft);
 }
 
 .topbar-inner{
@@ -103,11 +172,10 @@ main > section.about-hero{
 }
 
 .brand{
-  font-family: "DM Serif Display", Georgia, serif;
   font-size: 22px;
-  letter-spacing: .2px;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  color: var(--text);
+  color: var(--forest);
 }
 
 .nav{
@@ -120,25 +188,30 @@ main > section.about-hero{
 
 .nav a{
   text-decoration: none;
-  color: var(--text);
+  color: var(--sage);
   font-weight: 500;
   padding: 6px 0;
   border-bottom: 2px solid transparent;
+  transition: color var(--t-fast) var(--ease-soft), border-color var(--t-fast) var(--ease-soft);
 }
 
-.nav a:hover{ border-bottom-color: var(--accent); }
+.nav a:hover{
+  color: var(--forest);
+  border-bottom-color: color-mix(in oklab, var(--sage-mid) 50%, var(--forest) 50%);
+}
 
 .nav-cta{
   padding: 8px 12px !important;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--panel);
-  box-shadow: 0 6px 20px rgba(15,23,42,.08);
+  background-image: var(--grain);
+  box-shadow: 0 6px 22px color-mix(in oklab, var(--forest) 7%, transparent);
 }
 
 .nav-cta:hover{
   border-bottom-color: transparent !important;
-  border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+  border-color: color-mix(in oklab, var(--forest) 30%, var(--border));
 }
 
 /* Dropdown */
@@ -199,17 +272,19 @@ main > section.about-hero{
 }
 
 .h2{
-  font-family: "DM Serif Display", Georgia, serif;
   font-size: 34px;
   margin: 0 0 18px;
+  color: var(--forest);
+  font-weight: 500;
 }
 
 .h3{
-  font-size: 16px;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
+  letter-spacing: 0.1em;
+  color: var(--olive);
   margin: 28px 0 12px;
+  font-weight: 500;
 }
 
 .h3 .h3-link{
@@ -230,14 +305,17 @@ main > section.about-hero{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel);
+  background-image: var(--grain);
   padding: 16px 16px 14px;
-  box-shadow: 0 10px 32px rgba(15,23,42,.06);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--t-med) var(--ease-soft), border-color var(--t-med) var(--ease-soft);
 }
 
-.item-title{ 
-  font-weight: 700;
-  color: var(--text);
+.item-title{
+  font-weight: 600;
+  color: var(--forest);
   font-size: 18px;
+  font-family: var(--font-body);
 }
 
 .item-bullettitle{
@@ -275,44 +353,54 @@ main > section.about-hero{
   color: var(--muted);
 }
 
-/* For the buttons */
+/* Buttons — clean UI sans on literary body */
 .btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--border));
-  background: color-mix(in oklab, white 92%, var(--bg1));
+  border: 1px solid color-mix(in oklab, var(--forest) 25%, var(--border));
+  background: color-mix(in oklab, var(--parchment) 45%, #fff 55%);
   text-decoration: none;
-  color: var(--text);
-  font-weight: 700;
+  color: var(--forest);
+  font-weight: 600;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 0 color-mix(in oklab, var(--sage) 8%, transparent);
+  transition: background var(--t-med) var(--ease-soft), box-shadow var(--t-med) var(--ease-soft), border-color var(--t-med) var(--ease-soft), color var(--t-med) var(--ease-soft);
 }
 
 .btn:hover{
-  background: white;
-  box-shadow: 0 12px 32px rgba(15,23,42,.10);
-  border-color: color-mix(in oklab, var(--accent) 65%, var(--border));
+  background: var(--panel-strong);
+  box-shadow: var(--shadow-card);
+  border-color: color-mix(in oklab, var(--forest) 40%, var(--border));
+  color: var(--forest);
 }
 
 .btn-primary{
-  background: var(--accent);
-  color: #ffffff;
-  border-color: color-mix(in oklab, var(--accent) 70%, #000000);
+  background: var(--forest);
+  color: #f5f0e5;
+  border-color: color-mix(in oklab, var(--forest) 80%, #1a1a1a);
 }
 
 .btn-primary:hover{
-  background: color-mix(in oklab, var(--accent) 90%, #000000);
+  background: var(--forest-mid);
+  color: #f8f4eb;
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-ghost{
   border-color: var(--border);
   background: transparent;
+  box-shadow: none;
 }
 
 .btn-ghost:hover{
-  background: color-mix(in oklab, white 86%, var(--bg1));
+  background: color-mix(in oklab, var(--section-alt) 35%, transparent);
+  box-shadow: var(--shadow-card);
 }
 
 /* Footer */
@@ -355,22 +443,24 @@ main > section.about-hero{
   height: clamp(180px, 24vw, 340px);
   object-fit: cover;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  box-shadow: 0 18px 54px rgba(15,23,42,.16);
+  border: 1px solid color-mix(in oklab, var(--sage) 30%, var(--border));
+  box-shadow:
+    0 20px 50px color-mix(in oklab, var(--forest) 12%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--parchment) 60%, white);
 }
 
 .about-name{
-  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(42px, 5vw, 72px);
   line-height: 1.05;
   margin: 0;
+  color: var(--forest);
 }
 
 .about-desc{
   max-width: 70ch;
   margin: 0;
   font-size: 18px;
-  color: color-mix(in oklab, var(--text) 90%, var(--muted));
+  color: color-mix(in oklab, var(--text) 88%, var(--olive) 12%);
 }
 
 .social-icons{
@@ -387,23 +477,23 @@ main > section.about-hero{
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: transform var(--t-med) var(--ease-soft), background var(--t-med) var(--ease-soft);
 }
 
 .social-icons img{
   width: 30px;
   height: 30px;
-  opacity: 0.8;
-  filter: brightness(0) saturate(100%);
+  opacity: 0.78;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(12%) hue-rotate(85deg) saturate(1.1) brightness(0.95);
 }
 
 .social-icons a:hover{
-  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  background: color-mix(in oklab, var(--sage-mid) 16%, transparent);
   transform: translateY(-2px);
 }
 
 .social-icons a:hover img{
-  opacity: 1;
+  opacity: 0.95;
 }
 
 /* Contact */
@@ -417,7 +507,8 @@ main > section.about-hero{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel-strong);
-  box-shadow: var(--shadow);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-card);
 }
 
 .contact-title{
@@ -429,12 +520,14 @@ main > section.about-hero{
 }
 
 .contact-link{
-  font-weight: 700;
-  color: var(--accent);
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--forest-mid);
   text-decoration: none;
+  transition: color var(--t-fast) var(--ease-soft);
 }
 
-.contact-link:hover{ text-decoration: underline; }
+.contact-link:hover{ color: var(--forest); text-decoration: underline; }
 
 .contact-backtotop{
   display: flex;
@@ -449,7 +542,7 @@ main > section.about-hero{
 .course-gateway-lead{
   margin: 0 0 24px;
   max-width: 60ch;
-  color: var(--muted);
+  color: color-mix(in oklab, var(--muted) 85%, var(--olive) 15%);
   font-size: 17px;
 }
 
@@ -468,21 +561,22 @@ main > section.about-hero{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel);
-  box-shadow: 0 8px 28px rgba(15,23,42,.07);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   transition:
-    transform 0.32s ease,
-    box-shadow 0.32s ease,
-    border-color 0.32s ease,
-    background 0.32s ease;
+    transform var(--t-med) var(--ease-soft),
+    box-shadow var(--t-med) var(--ease-soft),
+    border-color var(--t-med) var(--ease-soft),
+    background-color var(--t-med) var(--ease-soft);
 }
 
 .course-gateway-card:hover,
 .course-gateway-card:focus-visible{
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 20px 48px rgba(15,23,42,.12);
-  border-color: color-mix(in oklab, var(--accent) 18%, var(--border));
-  background: color-mix(in oklab, white 88%, var(--section-alt));
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in oklab, var(--forest) 22%, var(--border));
+  background-color: color-mix(in oklab, var(--panel-strong) 70%, var(--section-alt) 30%);
 }
 
 .course-gateway-card:focus-visible{
@@ -497,8 +591,8 @@ main > section.about-hero{
 .course-gateway-card__thumb{
   position: absolute;
   inset: 0;
-  background: linear-gradient(140deg, var(--g1, #475569), var(--g2, #94a3b8));
-  opacity: 0.95;
+  background: linear-gradient(145deg, var(--g1, var(--forest-mid)), var(--g2, var(--sage-mid)));
+  opacity: 0.96;
 }
 
 .course-gateway-card__code{
@@ -506,12 +600,11 @@ main > section.about-hero{
   z-index: 1;
   display: block;
   padding: 32px 20px 24px;
-  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(32px, 4vw, 40px);
   line-height: 1;
-  color: #fff;
-  text-shadow: 0 2px 20px rgba(0,0,0,.2);
-  letter-spacing: 0.02em;
+  color: #f6f2e8;
+  text-shadow: 0 2px 24px color-mix(in oklab, var(--forest) 35%, transparent);
+  letter-spacing: 0.04em;
 }
 
 .course-gateway-card__body{
@@ -526,9 +619,9 @@ main > section.about-hero{
 .course-gateway-card__title{
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.35;
-  color: var(--text);
+  color: var(--forest);
 }
 
 .course-gateway-card__desc{
@@ -540,29 +633,37 @@ main > section.about-hero{
 
 .course-gateway-card__cta{
   margin-top: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-typewriter);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: color var(--t-fast) var(--ease-soft);
 }
 
 .course-gateway-card:hover .course-gateway-card__chevron,
 .course-gateway-card:focus-visible .course-gateway-card__chevron{
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
+
+.course-gateway-card:hover .course-gateway-card__cta{ color: var(--forest); }
 
 .course-gateway-card__chevron{
   display: inline-block;
-  transition: transform 0.28s ease;
+  transition: transform var(--t-med) var(--ease-soft);
 }
 
 /* Course archive page (course-15xxx.html) */
 .course-archive-hero{
   padding: 48px 0 20px;
   position: relative;
-  --section-bg: linear-gradient(180deg, #ffffff, var(--bg1));
+  --section-bg:
+    linear-gradient(180deg, var(--parchment) 0%, var(--bg0) 100%),
+    var(--grain);
 }
 
 .course-archive-hero::before{
@@ -590,10 +691,10 @@ main > section.about-hero{
 .course-archive-crumb a:hover{ text-decoration: underline; }
 
 .course-archive-title{
-  font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(32px, 4vw, 44px);
   line-height: 1.1;
   margin: 0 0 10px;
+  color: var(--forest);
 }
 
 .course-archive-lead{
@@ -621,22 +722,23 @@ main > section.about-hero{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel);
-  box-shadow: 0 8px 24px rgba(15,23,42,.06);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform var(--t-med) var(--ease-soft),
+    box-shadow var(--t-med) var(--ease-soft),
+    border-color var(--t-med) var(--ease-soft);
 }
 
 a.project-archive-card:hover,
 a.project-archive-card:focus-visible,
 article.project-archive-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(15,23,42,.1);
-  border-color: color-mix(in oklab, var(--accent) 16%, var(--border));
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in oklab, var(--forest) 18%, var(--border));
 }
 
 a.project-archive-card:focus-visible{ outline: none; }
@@ -645,7 +747,7 @@ a.project-archive-card:focus-visible{ outline: none; }
   display: block;
   height: 150px;
   width: 100%;
-  background: linear-gradient(135deg, var(--g1, #64748b), var(--g2, #a8b0bd));
+  background: linear-gradient(135deg, var(--g1, var(--sage-mid)), var(--g2, var(--sage-light)));
   flex-shrink: 0;
 }
 
@@ -661,9 +763,10 @@ h3.project-archive-card__title,
 .project-archive-card__title{
   margin: 0;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
-  color: var(--text);
+  color: var(--forest);
+  font-family: var(--font-body);
 }
 
 .project-archive-card__desc{
@@ -690,13 +793,23 @@ h3.project-archive-card__title,
 }
 
 .project-archive-card__links a{
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-typewriter);
+  letter-spacing: 0.04em;
+  color: var(--forest-mid);
   text-decoration: none;
+  transition: color var(--t-fast) var(--ease-soft);
 }
 
-.project-archive-card__links a:hover{ text-decoration: underline; }
+.project-archive-card__links a:hover{ color: var(--forest); text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *{
+    transition-duration: 0.01ms !important;
+  }
+}
 
 @media (max-width: 720px){
   .course-gateway-grid{ grid-template-columns: 1fr; }
