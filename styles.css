@@ -52,12 +52,27 @@ All final selections, modifications, and integration were performed by the autho
   --t-med: 0.38s;
 
   --radius: 18px;
-  /* Phase 9 — component rhythm */
   --radius-soft: 20px;           /* course + prominent cards */
-  --card-pad: 1.4rem 1.5rem;
-  --card-pad-tight: 1rem 1.1rem;
-  --section-vert: clamp(3.25rem, 5.5vw, 4.25rem);
-  --header-gap: 0.65rem;
+
+  /* Spacing scale (uniform rhythm) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --section-vert: clamp(3.5rem, 5.5vw, 4.5rem);
+  --section-vert-tight: clamp(2.75rem, 4.5vw, 3.5rem);
+  --header-gap: var(--space-3);
+  --gap-list: var(--space-4);
+  --gap-grid: var(--space-5);
+  --gutter-x: 1.5rem;
+
+  --card-pad: var(--space-5) var(--space-6);
+  --card-pad-tight: var(--space-4) var(--space-5);
   --max: 980px;
 }
 
@@ -67,7 +82,7 @@ html{ scroll-behavior: smooth; }
 body{
   margin: 0;
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1.0625rem;
   color: var(--text);
   background-color: var(--bg0);
   background-image: var(--grain);
@@ -104,9 +119,8 @@ body{
 
 .h2, .about-name, .course-archive-title{ letter-spacing: 0.01em; }
 
-.nav a{ font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
-.meta{ font-size: 12.5px; }
-.course-archive-crumb, .course-archive-crumb a{ font-size: 12px; }
+.nav a{   font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.course-archive-crumb, .course-archive-crumb a{ font-size: 0.8125rem; }
 
 /* Shows highlight of what's tabbing */
 :focus-visible{
@@ -116,7 +130,7 @@ body{
 }
 
 .wrap{
-  width: min(var(--max), calc(100% - 48px));
+  width: min(var(--max), calc(100% - var(--gutter-x) * 2));
   margin: 0 auto;
 }
 
@@ -173,16 +187,17 @@ main > section.about-hero{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
-  gap: 16px;
+  padding: var(--space-4) 0;
+  gap: var(--space-4);
 }
 
 .brand{
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 4px 0;
-  font-size: 22px;
+  padding: var(--space-1) 0;
+  font-size: 1.375rem;
+  line-height: 1.2;
   letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--forest);
@@ -193,7 +208,7 @@ main > section.about-hero{
 
 .nav{
   display: flex;
-  gap: 18px;
+  gap: var(--space-4) var(--space-3);
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -285,19 +300,20 @@ main > section.about-hero{
    ========================= */
 .section{
   padding: var(--section-vert) 0;
-  scroll-margin-top: 88px;
+  scroll-margin-top: 5.5rem;
 }
 
 /* Serif-led titles + optional typewriter kicker */
 .section-header{
-  margin: 0 0 1.75rem;
+  margin: 0 0 var(--space-7);
   max-width: 40rem;
 }
 
 .section-kicker{
   display: block;
   margin: 0 0 var(--header-gap);
-  font-size: 11px;
+  font-size: 0.6875rem;
+  line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--sage);
@@ -312,23 +328,25 @@ main > section.about-hero{
 }
 
 .h2{
-  font-size: clamp(1.75rem, 3.5vw, 2.15rem);
-  margin: 0 0 1.1rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.125rem);
+  margin: 0 0 var(--space-4);
   color: var(--forest);
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .h3{
-  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--olive);
-  margin: 1.6rem 0 0.75rem;
+  margin: var(--space-7) 0 var(--space-3);
   font-weight: 500;
 }
 
 .h3 .h3-link{
-  margin-left: 10px;
+  margin-left: var(--space-2);
   color: var(--muted);
   text-decoration: none;
   opacity: 0.75;
@@ -341,10 +359,11 @@ main > section.about-hero{
 
 /* First subsection label directly under a main section title */
 .section-header + .h3{
-  margin-top: 0.35rem;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
-.list{ display: grid; gap: 14px; }
+.list{ display: grid; gap: var(--gap-list); }
 
 /* Content cards — work, research, projects (shared; optional .content-card in markup) */
 .item{
@@ -369,7 +388,8 @@ main > section.about-hero{
 .item-title{
   font-weight: 600;
   color: var(--forest);
-  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.4;
   font-family: var(--font-body);
 }
 
@@ -384,23 +404,26 @@ main > section.about-hero{
 }
 
 .meta{
-  margin-top: 6px;
-  font-size: 13px;
+  margin-top: var(--space-2);
+  font-size: 0.8125rem;
+  line-height: 1.45;
   color: var(--muted);
 }
 
 .desc{
-  margin: 10px 0 0;
+  margin: var(--space-3) 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
   color: color-mix(in oklab, var(--text) 86%, var(--muted));
 }
 
 .desc-list{
-  margin: 10px 0 0;
-  padding-left: 1.2rem;
+  margin: var(--space-3) 0 0;
+  padding-left: 1.15rem;
 }
 
 .desc-list li{
-  margin: 6px 0;
+  margin: var(--space-2) 0;
   line-height: 1.55;
 }
 
@@ -408,13 +431,17 @@ main > section.about-hero{
   color: var(--muted);
 }
 
-/* Buttons — clean UI sans on literary body */
+/* Buttons — clean UI sans on literary body
+   (explicit line-height + padding so body’s Lora line-height doesn’t throw off centering) */
 .btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 18px;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  padding: 0 var(--space-5);
+  line-height: 1.2;
   border-radius: 999px;
   border: 1px solid color-mix(in oklab, var(--forest) 25%, var(--border));
   background: color-mix(in oklab, var(--parchment) 45%, #fff 55%);
@@ -422,8 +449,8 @@ main > section.about-hero{
   color: var(--forest);
   font-weight: 600;
   font-family: var(--font-ui);
-  font-size: 15px;
-  letter-spacing: 0.01em;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
   box-shadow: 0 2px 0 color-mix(in oklab, var(--sage) 8%, transparent);
   transition: background var(--t-med) var(--ease-soft), box-shadow var(--t-med) var(--ease-soft), border-color var(--t-med) var(--ease-soft), color var(--t-med) var(--ease-soft);
 }
@@ -460,37 +487,38 @@ main > section.about-hero{
 
 /* Footer */
 .footer{
-  padding: 28px 0 44px;
+  padding: var(--space-8) 0 var(--space-10);
   color: var(--muted);
-  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.5;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
-.footer-credit{ font-size: 13px; opacity: 0.85; }
+.footer-credit{ font-size: 0.8125rem; opacity: 0.85; }
 
 /* =========================
    About / hero
    ========================= */
 .about-hero{
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 4.5rem);
   display: flex;
   align-items: center;
-  padding: 56px 0;
-  scroll-margin-top: 84px;
+  padding: var(--section-vert) 0;
+  scroll-margin-top: 5.5rem;
 }
 
 .about-hero-inner{
-  width: min(var(--max), calc(100% - 48px));
+  width: min(var(--max), calc(100% - var(--gutter-x) * 2));
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 20px;
+  gap: var(--space-5);
 }
 
 .about-photo-xl img{
@@ -512,17 +540,18 @@ main > section.about-hero{
 }
 
 .about-desc{
-  max-width: 70ch;
+  max-width: 65ch;
   margin: 0;
-  font-size: 18px;
+  font-size: 1.06rem;
+  line-height: 1.65;
   color: color-mix(in oklab, var(--text) 88%, var(--olive) 12%);
 }
 
 .social-icons{
   display: flex;
-  gap: 35px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  gap: var(--space-8);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 .social-icons a{
@@ -556,7 +585,7 @@ main > section.about-hero{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-4);
   flex-wrap: wrap;
   padding: var(--card-pad);
   border: 1px solid var(--border);
@@ -564,14 +593,16 @@ main > section.about-hero{
   background: var(--panel-strong);
   background-image: var(--grain);
   box-shadow: var(--shadow-card);
+  max-width: 36rem;
 }
 
 .contact-title{
-  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
   text-transform: uppercase;
-  letter-spacing: .14em;
+  letter-spacing: 0.1em;
   color: var(--muted);
-  margin-bottom: 6px;
+  margin-bottom: var(--space-2);
 }
 
 .contact-link{
@@ -587,25 +618,31 @@ main > section.about-hero{
 .contact-backtotop{
   display: flex;
   justify-content: center;
-  margin-top: 25px;
-  margin-bottom: -25px;
+  align-items: center;
+  margin-top: var(--space-6);
+  margin-bottom: calc(-1 * var(--space-6));
+}
+
+/* Child is the pill button — don’t stretch it on the cross axis (matches Back to top on index) */
+.contact-backtotop .btn{
+  flex-shrink: 0;
 }
 
 /* =========================
    Course project gateway (home) & archive pages
    ========================= */
 .course-gateway-lead{
-  margin: 0 0 1.5rem;
-  max-width: 60ch;
-  color: color-mix(in oklab, var(--muted) 85%, var(--olive) 15%);
-  font-size: 17px;
+  margin: 0 0 var(--space-6);
+  max-width: 50ch;
+  color: color-mix(in oklab, var(--muted) 88%, var(--olive) 12%);
+  font-size: 1.03rem;
   line-height: 1.6;
 }
 
 .course-gateway-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: var(--gap-grid);
   align-items: start;
 }
 
@@ -656,8 +693,8 @@ main > section.about-hero{
   position: relative;
   z-index: 1;
   display: block;
-  padding: 32px 20px 24px;
-  font-size: clamp(32px, 4vw, 40px);
+  padding: var(--space-8) var(--space-5) var(--space-6);
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
   line-height: 1;
   color: #f6f2e8;
   text-shadow: 0 2px 24px color-mix(in oklab, var(--forest) 35%, transparent);
@@ -665,10 +702,10 @@ main > section.about-hero{
 }
 
 .course-gateway-card__body{
-  padding: 1.25rem 1.35rem 1.4rem;
+  padding: var(--card-pad);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
   flex: 1;
   min-height: 7.5rem;
   justify-content: space-between;
@@ -677,22 +714,22 @@ main > section.about-hero{
 .course-gateway-card h3,
 .course-gateway-card__title{
   margin: 0;
-  font-size: 18px;
+  font-size: 1.0625rem;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--forest);
 }
 
 .course-gateway-card__desc{
   margin: 0;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.5;
   color: color-mix(in oklab, var(--text) 78%, var(--muted));
 }
 
 .course-gateway-card__cta{
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: var(--space-1);
+  font-size: 0.75rem;
   font-weight: 500;
   font-family: var(--font-typewriter);
   letter-spacing: 0.08em;
@@ -700,7 +737,7 @@ main > section.about-hero{
   color: var(--sage);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
   transition: color var(--t-fast) var(--ease-soft);
 }
 
@@ -718,7 +755,7 @@ main > section.about-hero{
 
 /* Course archive page (course-15xxx.html) */
 .course-archive-hero{
-  padding: 48px 0 20px;
+  padding: var(--section-vert) 0 var(--space-6);
   position: relative;
   --section-bg:
     linear-gradient(180deg, var(--parchment) 0%, var(--bg0) 100%),
@@ -737,8 +774,9 @@ main > section.about-hero{
 }
 
 .course-archive-crumb{
-  margin: 0 0 12px;
-  font-size: 14px;
+  margin: 0 0 var(--space-3);
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 .course-archive-crumb a{
@@ -750,38 +788,39 @@ main > section.about-hero{
 .course-archive-crumb a:hover{ text-decoration: underline; }
 
 .course-archive-hero .section-kicker{
-  margin: 0.4rem 0 0.45rem;
+  margin: var(--space-2) 0 var(--space-2);
 }
 
 .course-archive-title{
-  font-size: clamp(32px, 4vw, 44px);
-  line-height: 1.1;
-  margin: 0 0 10px;
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  line-height: 1.12;
+  margin: 0 0 var(--space-3);
   color: var(--forest);
+  letter-spacing: 0.01em;
 }
 
 .course-archive-lead{
   margin: 0;
-  max-width: 64ch;
+  max-width: 58ch;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 1.03rem;
+  line-height: 1.6;
 }
 
 .project-archive-body{
-  padding: 20px 0 64px;
+  padding: var(--space-6) 0 var(--section-vert);
 }
 
 .project-archive-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+  gap: var(--gap-grid);
   align-items: stretch;
 }
 
 /* Single project: centered, readable width */
 .project-archive-grid:has(> :only-child){
-  max-width: 32rem;
+  max-width: min(32rem, 100%);
   margin-inline: auto;
   grid-template-columns: 1fr;
 }
@@ -829,10 +868,10 @@ a.project-archive-card:focus-visible{ outline: none; }
 }
 
 .project-archive-card__content{
-  padding: 1.15rem 1.3rem 1.35rem;
+  padding: var(--space-5) var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: var(--space-2);
   flex: 1;
   min-height: 0;
 }
@@ -840,38 +879,39 @@ a.project-archive-card:focus-visible{ outline: none; }
 h3.project-archive-card__title,
 .project-archive-card__title{
   margin: 0;
-  font-size: 17px;
+  font-size: 1.04rem;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--forest);
   font-family: var(--font-body);
 }
 
 .project-archive-card__desc{
   margin: 0;
-  font-size: 14px;
+  font-size: 0.9375rem;
   line-height: 1.5;
-  color: color-mix(in oklab, var(--text) 80%, var(--muted));
+  color: color-mix(in oklab, var(--text) 82%, var(--muted));
   flex: 1;
 }
 
 .project-archive-card__meta{
-  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
-  margin-top: 4px;
+  margin-top: var(--space-1);
 }
 
 .project-archive-card__links{
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 4px;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
 }
 
 .project-archive-card__links a{
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   font-family: var(--font-typewriter);
   letter-spacing: 0.04em;
@@ -900,5 +940,13 @@ h3.project-archive-card__title,
 }
 
 @media (max-width: 640px){
-  .nav{ gap: 12px; }
+  :root{
+    --gutter-x: 1.15rem;
+    --gap-grid: 1.15rem;
+    --gap-list: 0.9rem;
+  }
+  .nav{ gap: var(--space-3) var(--space-2); }
+  .topbar-inner{ padding: var(--space-3) 0; }
+  .about-hero-inner{ gap: var(--space-4); }
+  .section-header{ margin-bottom: var(--space-6); }
 }
