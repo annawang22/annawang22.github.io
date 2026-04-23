@@ -31,17 +31,10 @@ All final selections, modifications, and integration were performed by the autho
       <nav class="nav" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#work-experience">Work Experience</a>
-
-        <div class="dropdown">
-          <a class="nav-item" href="#projects" aria-haspopup="true" aria-expanded="false">Projects</a>
-          <div class="dropdown-menu" role="menu" aria-label="Projects submenu">
-            <a class="dropdown-item" role="menuitem" href="gamecreation.html">Game Creation</a>
-            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
-            <a class="dropdown-item" role="menuitem" href="#" aria-disabled="true">TBD</a>
-          </div>
-        </div>
-
-        <a href="#contact">Contact Me</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#course-projects">Course Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -105,11 +98,8 @@ All final selections, modifications, and integration were performed by the autho
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <h2 class="h2">Projects</h2>
-
-      <h3 class="h3">Research</h3>
+    <section id="research" class="section">
+      <h2 class="h2">Research</h2>
       <div class="list">
         <article class="item">
           <div class="item-title">Carnegie Mellon University SURA</div>
@@ -141,8 +131,47 @@ All final selections, modifications, and integration were performed by the autho
           </ul>
         </article>
       </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="h2">Projects</h2>
 
       <h3 class="h3">Software</h3>
+      <div class="list">
+        <article class="item">
+          <a
+            class="item-title"
+            href="https://annawang22.github.io/gesture-app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Project 2: Gesture-Controlled Spotify Web App
+          </a>
+          <div class="meta">15-113 • Python • JavaScript • AI</div>
+          <ul class="desc desc-list">
+            <li>Web app that controls Spotify playback using hand gestures detected by a webcam</li>
+            <li>Built full stack: HTML/CSS/JS frontend, Python Flask backend, deployed on Render and GitHub pages</li>
+            <li>Integrated Google MediaPipe ML model for real-time hand gesture recognition</li>
+            <li>Connected to Spotify Web API using PKCE OAuth authentication flow</li>
+          </ul>
+        </article>
+       
+      </div>
+
+      <h3 class="h3">Hardware</h3>
+      <div class="list">
+        <article class="item">
+          <a class="item-title">Build18?</a>
+          <div class="meta">TBD!</div>
+          <ul class="desc desc-list">
+            <li>TBD!</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="course-projects" class="section">
+      <h2 class="h2">More Course Projects</h2>
       <div class="list">
         <article class="item">
           <a
@@ -172,24 +201,6 @@ All final selections, modifications, and integration were performed by the autho
           <ul class="desc desc-list">
             <li>Built a Flask-based gesture-recognition web API that accepts an uploaded image and returns the top MediaPipe gesture label and confidence score</li>
             <li>Developed a separate client script that captures webcam frames and sends them to the API and then prints the predicted gesture from the response</li>
-          </ul>
-        </article>
-
-        <article class="item">
-          <a
-            class="item-title"
-            href="https://annawang22.github.io/gesture-app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Project 2: Gesture-Controlled Spotify Web App
-          </a>
-          <div class="meta">15-113 • Python • JavaScript • AI</div>
-          <ul class="desc desc-list">
-            <li>Web app that controls Spotify playback using hand gestures detected by a webcam</li>
-            <li>Built full stack: HTML/CSS/JS frontend, Python Flask backend, deployed on Render and GitHub pages</li>
-            <li>Integrated Google MediaPipe ML model for real-time hand gesture recognition</li>
-            <li>Connected to Spotify Web API using PKCE OAuth authentication flow</li>
           </ul>
         </article>
 
@@ -241,9 +252,6 @@ All final selections, modifications, and integration were performed by the autho
         </article>
       </div>
 
-      <h3 class="h3">
-        Game Creation <a class="h3-link" href="gamecreation.html#game-gallery">(View More)</a>
-      </h3>
       <div class="list">
         <article class="item">
           <div class="item-title">15-112 Final Project: Anna Wang's Subway Surfers</div>
@@ -254,8 +262,8 @@ All final selections, modifications, and integration were performed by the autho
         </article>
 
         <article class="item">
-          <a 
-            class="item-title" 
+          <a
+            class="item-title"
             href="https://github.com/annawang22/15113-hw2-crossy-road.git"
             target="_blank"
             rel="noopener noreferrer"
@@ -265,14 +273,6 @@ All final selections, modifications, and integration were performed by the autho
           <div class="meta">Python • ChatGPT Pro • Claude AI</div>
           <ul class="desc desc-list">
             <li>Time-limited challenge to recreate the classic Crossy Road game mechanics in Python using AI within one hour</li>
-          </ul>
-        </article>
-
-        <article class="item">
-          <a class="item-title">Game Creation Project 1</a>
-          <div class="meta">Unity/Unreal</div>
-          <ul class="desc desc-list">
-            <li>TBD!</li>
           </ul>
         </article>
       </div>

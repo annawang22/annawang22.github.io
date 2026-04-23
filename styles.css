@@ -8,7 +8,8 @@ All final selections, modifications, and integration were performed by the autho
 :root{
   /* Color palette */
   --bg0: #ffffff;         /* base */
-  --bg1: #f5f7fb;         /* alternate section */
+  --bg1: #f5f7fb;         /* panels / soft fills */
+  --section-alt: #e4ecfa; /* alternating section band (light blue) */
   --panel: rgba(255,255,255,.92);
   --panel-strong: rgba(255,255,255,.98);
 
@@ -67,7 +68,19 @@ main > section::before{
 }
 
 main > section:nth-of-type(odd){ --section-bg: var(--bg0); }
-main > section:nth-of-type(even){ --section-bg: var(--bg1); }
+main > section:nth-of-type(even){ --section-bg: var(--section-alt); }
+
+/* Hero sets its own full-bleed background (wins over nth-of-type for --section-bg) */
+main > section.about-hero{
+  --section-bg:
+    radial-gradient(900px 520px at 20% 10%,
+      color-mix(in oklab, var(--accent) 10%, white) 0%,
+      transparent 60%),
+    radial-gradient(820px 520px at 85% 30%,
+      color-mix(in oklab, var(--accent-2) 10%, white) 0%,
+      transparent 60%),
+    linear-gradient(180deg, #ffffff, var(--bg1));
+}
 
 /* =========================
    Top nav
@@ -325,15 +338,6 @@ main > section:nth-of-type(even){ --section-bg: var(--bg1); }
   align-items: center;
   padding: 56px 0;
   scroll-margin-top: 84px;
-
-  --section-bg:
-    radial-gradient(900px 520px at 20% 10%,
-      color-mix(in oklab, var(--accent) 10%, white) 0%,
-      transparent 60%),
-    radial-gradient(820px 520px at 85% 30%,
-      color-mix(in oklab, var(--accent-2) 10%, white) 0%,
-      transparent 60%),
-    linear-gradient(180deg, #ffffff, var(--bg1));
 }
 
 .about-hero-inner{
