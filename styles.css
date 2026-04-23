@@ -52,6 +52,12 @@ All final selections, modifications, and integration were performed by the autho
   --t-med: 0.38s;
 
   --radius: 18px;
+  /* Phase 9 — component rhythm */
+  --radius-soft: 20px;           /* course + prominent cards */
+  --card-pad: 1.4rem 1.5rem;
+  --card-pad-tight: 1rem 1.1rem;
+  --section-vert: clamp(3.25rem, 5.5vw, 4.25rem);
+  --header-gap: 0.65rem;
   --max: 980px;
 }
 
@@ -172,11 +178,18 @@ main > section.about-hero{
 }
 
 .brand{
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 0;
   font-size: 22px;
   letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--forest);
+  transition: color var(--t-fast) var(--ease-soft);
 }
+
+.brand:hover{ color: var(--forest-mid); }
 
 .nav{
   display: flex;
@@ -190,7 +203,10 @@ main > section.about-hero{
   text-decoration: none;
   color: var(--sage);
   font-weight: 500;
-  padding: 6px 0;
+  padding: 10px 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-bottom: 2px solid transparent;
   transition: color var(--t-fast) var(--ease-soft), border-color var(--t-fast) var(--ease-soft);
 }
@@ -265,15 +281,39 @@ main > section.about-hero{
 
 /* =========================
    Layout & typography
+   Phase 9 — section headers, content cards, rhythm
    ========================= */
 .section{
-  padding: 56px 0;
-  scroll-margin-top: 84px;
+  padding: var(--section-vert) 0;
+  scroll-margin-top: 88px;
+}
+
+/* Serif-led titles + optional typewriter kicker */
+.section-header{
+  margin: 0 0 1.75rem;
+  max-width: 40rem;
+}
+
+.section-kicker{
+  display: block;
+  margin: 0 0 var(--header-gap);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sage);
+  font-weight: 500;
+  opacity: 0.92;
+  font-family: var(--font-typewriter);
+}
+
+.section-header .h2{
+  margin: 0;
+  line-height: 1.15;
 }
 
 .h2{
-  font-size: 34px;
-  margin: 0 0 18px;
+  font-size: clamp(1.75rem, 3.5vw, 2.15rem);
+  margin: 0 0 1.1rem;
   color: var(--forest);
   font-weight: 500;
 }
@@ -283,7 +323,7 @@ main > section.about-hero{
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--olive);
-  margin: 28px 0 12px;
+  margin: 1.6rem 0 0.75rem;
   font-weight: 500;
 }
 
@@ -299,16 +339,31 @@ main > section.about-hero{
   text-decoration: underline;
 }
 
-.list{ display: grid; gap: 12px; }
+/* First subsection label directly under a main section title */
+.section-header + .h3{
+  margin-top: 0.35rem;
+}
 
+.list{ display: grid; gap: 14px; }
+
+/* Content cards — work, research, projects (shared; optional .content-card in markup) */
 .item{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel);
   background-image: var(--grain);
-  padding: 16px 16px 14px;
+  padding: var(--card-pad);
   box-shadow: var(--shadow-card);
-  transition: box-shadow var(--t-med) var(--ease-soft), border-color var(--t-med) var(--ease-soft);
+  transition:
+    box-shadow var(--t-med) var(--ease-soft),
+    border-color var(--t-med) var(--ease-soft),
+    transform var(--t-med) var(--ease-soft);
+}
+
+.item:hover{
+  box-shadow: var(--shadow-hover);
+  border-color: color-mix(in oklab, var(--forest) 19%, var(--border));
+  transform: translateY(-2px);
 }
 
 .item-title{
@@ -503,7 +558,7 @@ main > section.about-hero{
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 18px 18px;
+  padding: var(--card-pad);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--panel-strong);
@@ -540,10 +595,11 @@ main > section.about-hero{
    Course project gateway (home) & archive pages
    ========================= */
 .course-gateway-lead{
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   max-width: 60ch;
   color: color-mix(in oklab, var(--muted) 85%, var(--olive) 15%);
   font-size: 17px;
+  line-height: 1.6;
 }
 
 .course-gateway-grid{
@@ -558,12 +614,13 @@ main > section.about-hero{
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--forest) 18%, var(--border));
+  border-radius: var(--radius-soft);
   background: var(--panel);
   background-image: var(--grain);
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  min-height: 15.5rem;
   transition:
     transform var(--t-med) var(--ease-soft),
     box-shadow var(--t-med) var(--ease-soft),
@@ -585,7 +642,7 @@ main > section.about-hero{
 
 .course-gateway-card__media{
   position: relative;
-  min-height: 120px;
+  min-height: 8.5rem;
 }
 
 .course-gateway-card__thumb{
@@ -608,11 +665,13 @@ main > section.about-hero{
 }
 
 .course-gateway-card__body{
-  padding: 18px 20px 20px;
+  padding: 1.25rem 1.35rem 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   flex: 1;
+  min-height: 7.5rem;
+  justify-content: space-between;
 }
 
 .course-gateway-card h3,
@@ -690,6 +749,10 @@ main > section.about-hero{
 
 .course-archive-crumb a:hover{ text-decoration: underline; }
 
+.course-archive-hero .section-kicker{
+  margin: 0.4rem 0 0.45rem;
+}
+
 .course-archive-title{
   font-size: clamp(32px, 4vw, 44px);
   line-height: 1.1;
@@ -712,15 +775,28 @@ main > section.about-hero{
 .project-archive-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 1.25rem;
   align-items: stretch;
+}
+
+/* Single project: centered, readable width */
+.project-archive-grid:has(> :only-child){
+  max-width: 32rem;
+  margin-inline: auto;
+  grid-template-columns: 1fr;
+}
+
+.project-archive-grid > a.project-archive-card,
+.project-archive-grid > article.project-archive-card{
+  min-height: 100%;
+  height: 100%;
 }
 
 .project-archive-card{
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--forest) 16%, var(--border));
+  border-radius: var(--radius-soft);
   background: var(--panel);
   background-image: var(--grain);
   box-shadow: var(--shadow-card);
@@ -745,18 +821,20 @@ a.project-archive-card:focus-visible{ outline: none; }
 
 .project-archive-card__thumb{
   display: block;
-  height: 150px;
+  height: 9.5rem;
+  min-height: 8rem;
   width: 100%;
   background: linear-gradient(135deg, var(--g1, var(--sage-mid)), var(--g2, var(--sage-light)));
   flex-shrink: 0;
 }
 
 .project-archive-card__content{
-  padding: 16px 18px 18px;
+  padding: 1.15rem 1.3rem 1.35rem;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.45rem;
   flex: 1;
+  min-height: 0;
 }
 
 h3.project-archive-card__title,
@@ -808,6 +886,12 @@ h3.project-archive-card__title,
   html{ scroll-behavior: auto; }
   *{
     transition-duration: 0.01ms !important;
+  }
+  .item:hover,
+  .course-gateway-card:hover,
+  a.project-archive-card:hover,
+  article.project-archive-card:hover{
+    transform: none;
   }
 }
 
