@@ -393,6 +393,18 @@ main > section.about-hero{
   font-family: var(--font-body);
 }
 
+.item-title a{
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.item-title a:hover{
+  color: var(--forest-mid);
+}
+
 .item-bullettitle{
   color: var(--text);
   text-decoration: none;
