@@ -57,6 +57,10 @@
     return (el.dataset.image && el.dataset.image.trim()) || "";
   }
 
+  function readNoImage(el) {
+    return el.hasAttribute("data-no-image");
+  }
+
   function readLinks(el) {
     let demo = (el.dataset.demo && el.dataset.demo.trim()) || "";
     let github = (el.dataset.github && el.dataset.github.trim()) || "";
@@ -105,7 +109,11 @@
     titleEl.textContent = data.title;
     textEl.textContent = data.desc || "Add a longer description in the data-desc attribute or in the card copy.";
 
-    if (data.image) {
+    if (data.noImage) {
+      img.setAttribute("hidden", "");
+      img.removeAttribute("src");
+      ph.setAttribute("hidden", "");
+    } else if (data.image) {
       ph.setAttribute("hidden", "");
       img.alt = data.title ? `Preview: ${data.title}` : "Project preview";
       img.onerror = function () {
@@ -146,6 +154,8 @@
       btnGh.setAttribute("hidden", "");
       btnGh.href = "#";
     }
+
+    root.classList.toggle("project-modal--text-only", Boolean(data.noImage));
   }
 
   let lastFocus = null;
@@ -160,6 +170,7 @@
       title: readTitle(fromEl),
       desc: readDesc(fromEl),
       image: readImage(fromEl),
+      noImage: readNoImage(fromEl),
       demo,
       github,
       project,

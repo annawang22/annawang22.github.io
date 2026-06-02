@@ -811,6 +811,14 @@ main > section.about-hero{
   padding: var(--space-6) 0 var(--section-vert);
 }
 
+.project-archive-subsection + .project-archive-subsection{
+  margin-top: var(--space-8);
+}
+
+.project-archive-subsection .h3{
+  margin: 0 0 var(--space-5);
+}
+
 .project-archive-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
@@ -883,6 +891,10 @@ a.project-archive-card:focus-visible{ outline: none; }
 }
 
 .project-archive-card__thumb:has(img)::after{
+  display: none;
+}
+
+.project-archive-card[data-no-image] .project-archive-card__thumb::after{
   display: none;
 }
 
@@ -1059,6 +1071,32 @@ body.project-modal--open{
   gap: var(--space-6);
   padding: var(--space-6);
   padding-top: var(--space-8);
+}
+
+.project-modal--text-only .project-modal__grid{
+  grid-template-columns: 1fr;
+  min-height: min(16rem, 50vh);
+}
+
+.project-modal--text-only .project-modal__media{
+  display: none;
+}
+
+.project-modal--text-only .project-modal__body{
+  justify-content: center;
+  padding-top: 0;
+  min-height: 100%;
+}
+
+.project-modal--text-only .project-modal__section{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-modal--text-only .project-modal__text{
+  max-width: 42rem;
 }
 
 .project-modal__media{
