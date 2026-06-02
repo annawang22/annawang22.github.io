@@ -27,6 +27,7 @@
         </div>
         <div class="project-modal__actions">
           <a class="btn btn-ghost project-modal__btn project-modal__btn--demo" href="#" target="_blank" rel="noopener noreferrer" hidden>Demo</a>
+          <a class="btn btn-ghost project-modal__btn project-modal__btn--project" href="#" target="_blank" rel="noopener noreferrer" hidden>Project</a>
           <a class="btn project-modal__btn project-modal__btn--gh" href="#" target="_blank" rel="noopener noreferrer" hidden>GitHub</a>
         </div>
       </div>
@@ -59,14 +60,17 @@
   function readLinks(el) {
     let demo = (el.dataset.demo && el.dataset.demo.trim()) || "";
     let github = (el.dataset.github && el.dataset.github.trim()) || "";
+    let project = (el.dataset.project && el.dataset.project.trim()) || "";
 
     if (el.tagName === "A" && el.href) {
       const h = el.href;
       if (h && h !== "" && h !== window.location.href + "#") {
         if (h.includes("github.com")) {
           if (!github) github = h;
-        } else if (!demo) {
+        } else if (!demo && !project) {
           demo = h;
+        } else if (!project) {
+          project = h;
         }
       }
     }
@@ -78,13 +82,15 @@
         if (!a.href) return;
         if (a.href.includes("github.com") || t.includes("repo")) {
           if (!github) github = a.href;
-        } else {
-          if (!demo) demo = a.href;
+        } else if (t.includes("project")) {
+          if (!project) project = a.href;
+        } else if (!demo) {
+          demo = a.href;
         }
       });
     }
 
-    return { demo, github };
+    return { demo, github, project };
   }
 
   function populateModal(root, data) {
@@ -93,6 +99,7 @@
     const img = root.querySelector(".project-modal__img");
     const ph = root.querySelector(".project-modal__placeholder");
     const btnDemo = root.querySelector(".project-modal__btn--demo");
+    const btnProject = root.querySelector(".project-modal__btn--project");
     const btnGh = root.querySelector(".project-modal__btn--gh");
 
     titleEl.textContent = data.title;
@@ -124,6 +131,14 @@
       btnDemo.href = "#";
     }
 
+    if (data.project && data.project !== "#") {
+      btnProject.href = data.project;
+      btnProject.removeAttribute("hidden");
+    } else {
+      btnProject.setAttribute("hidden", "");
+      btnProject.href = "#";
+    }
+
     if (data.github && data.github !== "#") {
       btnGh.href = data.github;
       btnGh.removeAttribute("hidden");
@@ -140,13 +155,14 @@
     const root = document.getElementById(MODAL_ID);
     if (!root) return;
 
-    const { demo, github } = readLinks(fromEl);
+    const { demo, github, project } = readLinks(fromEl);
     const data = {
       title: readTitle(fromEl),
       desc: readDesc(fromEl),
       image: readImage(fromEl),
       demo,
       github,
+      project,
     };
 
     populateModal(root, data);
