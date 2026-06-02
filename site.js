@@ -8,7 +8,24 @@
     if (y) y.textContent = new Date().getFullYear();
   }
 
+  function setProfilePhoto() {
+    const img = document.getElementById("profile-photo");
+    const path = window.SITE_CONFIG?.profilePhoto;
+    if (img && path) img.src = path;
+  }
+
+  function setResumeRequestLink() {
+    const link = document.getElementById("resume-request");
+    const email = window.SITE_CONFIG?.resumeRequestEmail;
+    if (link && email) {
+      const subject = encodeURIComponent("Resume request – Anna Wang");
+      link.href = `mailto:${email}?subject=${subject}`;
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
+    setProfilePhoto();
+    setResumeRequestLink();
     setCurrentYear();
   });
 })();
