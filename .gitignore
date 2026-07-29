@@ -3,9 +3,10 @@ assets/private/*
 !assets/private/.gitkeep
 private/
 
-# Resumes & documents — request via email, do not host on the site
+# Resumes & documents (published resume is explicitly allowed below)
 assets/*.pdf
 *.pdf
+!assets/Wang_Anna_Resume.pdf
 
 # Old / superseded assets (keep a copy in assets/private/ if you still want them)
 assets/profilepic.jpg
