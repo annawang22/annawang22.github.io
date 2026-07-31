@@ -51,7 +51,7 @@ All final selections, modifications, and integration were performed by the autho
         <h1 class="about-name">Anna Wang</h1>
 
         <p class="about-desc">
-          I am a freshman at Carnegie Mellon University, studying Electrical &amp; Computer Engineering.
+          I am a sophomore at Carnegie Mellon University, studying Electrical &amp; Computer Engineering.
           I'm fascinated by neural engineering, machine learning, and computer vision. Outside school, I
           enjoy playing tennis and making videos on Youtube.
         </p>
@@ -115,9 +115,9 @@ All final selections, modifications, and integration were performed by the autho
           </div>
           <div class="meta">Pittsburgh, PA • Mar 2026 – Present</div>
           <ul class="desc desc-list">
-            <li>Develop experimental software and data-collection infrastructure for active human-subject BCI studies</li>
-            <li>Design stimulus and session tooling used in neuroscience experiments</li>
-            <li>Contribute to neural signal processing and machine learning pipelines for non-invasive brain-computer interfaces</li>
+            <li>Migrated lab&rsquo;s SpeechBCI experimental pipeline from BCI2000 to modular Lab Streaming Layer + PsychoPy stack to support new hardware</li>
+            <li>Designed and built all stimulus frontend logic for data collection sessions currently used in active human subject experiments to train an EEG-to-speech decoder algorithm</li>
+            <li>Contributed to an end-to-end SpeechBCI pipeline to decode EEG signals into natural language using deep learning sequence models</li>
           </ul>
         </article>
 
@@ -152,12 +152,32 @@ All final selections, modifications, and integration were performed by the autho
         <h2 class="h2">Projects</h2>
       </div>
 
+      <h3 class="h3">Hardware</h3>
+      <div class="list">
+        <article class="item content-card">
+          <a
+            class="item-title"
+            href="https://github.com/psychovia/tiny-gpu-pro-max.git"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Image Rendering Tiny GPU
+          </a>
+          <div class="meta">18-240: Structure and Design of Digital Systems Final Project • Jul 2026 – Present</div>
+          <ul class="desc desc-list">
+            <li>Designed an 8-lane lockstep SIMD GPU in SystemVerilog with a custom RV32IM ISA, including a multi-cycle core, scheduler, ALU, control flow, and load/store support</li>
+            <li>Built an AI-assisted Python toolchain for assembly and image-to-memory conversion, plus a shared-memory arbiter for concurrent byte-masked accesses across all eight lanes</li>
+            <li>Rendered a user-selected image on a Xilinx Spartan-7 FPGA display and verified GPU through 10 testbenches, 801 assertions, and mutation testing</li>
+          </ul>
+        </article>
+      </div>
+
       <h3 class="h3">Software</h3>
       <div class="list">
         <article class="item content-card">
           <a
             class="item-title"
-            href="https://annawang22.github.io/gesture-app/"
+            href="https://github.com/annawang22/15113-spotify-gesture-recognition.git"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -189,19 +209,8 @@ All final selections, modifications, and integration were performed by the autho
             <li>Handled complex UI logic like merging multiple exercise sources and managing gesture interactions</li>
           </ul>
         </article>
-       
-      </div>
 
-      <!-- <h3 class="h3">Hardware</h3>
-      <div class="list">
-        <article class="item content-card">
-          <a class="item-title">Build18?</a>
-          <div class="meta">TBD!</div>
-          <ul class="desc desc-list">
-            <li>TBD!</li>
-          </ul>
-        </article>
-      </div> -->
+      </div>
     </section>
 
     <section id="course-projects" class="section">
@@ -212,7 +221,7 @@ All final selections, modifications, and integration were performed by the autho
       <p class="course-gateway-lead">Choose a course to browse its project archive.</p>
 
       <!--
-        Course order: 15-112, 15-113, then any future course (e.g. 15-122).
+        Course order: 15-112, 15-113, 18-240, then any future course (e.g. 15-122).
         In a 2-column grid, the third card appears in row 2, column 1 (under 15-112).
       -->
       <div class="course-gateway-grid" role="list">
@@ -236,6 +245,18 @@ All final selections, modifications, and integration were performed by the autho
           <div class="course-gateway-card__body">
             <h3 class="course-gateway-card__title">15-113 — Effective Coding with AI</h3>
             <p class="course-gateway-card__desc">Built complete applications using AI coding tools while learning prompt engineering, code evaluation, ethical AI use, and best practices for AI-assisted software development.            </p>
+            <span class="course-gateway-card__cta">View projects <span class="course-gateway-card__chevron" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a class="course-gateway-card" href="course-18240.html" role="listitem">
+          <div class="course-gateway-card__media" aria-hidden="true">
+            <div class="course-gateway-card__thumb" style="--g1: #2b2b3d; --g2: #6b6b8f"></div>
+            <span class="course-gateway-card__code">18-240</span>
+          </div>
+          <div class="course-gateway-card__body">
+            <h3 class="course-gateway-card__title">18-240 — Structure and Design of Digital Systems</h3>
+            <p class="course-gateway-card__desc">Learned digital logic fundamentals, from Boolean algebra and RTL design to processor organization and hardware description languages, with hands-on FPGA labs.            </p>
             <span class="course-gateway-card__cta">View projects <span class="course-gateway-card__chevron" aria-hidden="true">→</span></span>
           </div>
         </a>
